@@ -61,20 +61,20 @@
         headers: { 'Accept': 'application/json' }
       });
       if (res.ok) {
-        showToast('ðŸŒ² Booking request sent! James will be in touch within 24 hours.');
+        showToast('🌲 Booking request sent! James will be in touch within 24 hours.');
         form.reset();
       } else {
-        showToast('âš ï¸ Something went wrong. Please try again or email directly.');
+        showToast('⚠️ Something went wrong. Please try again or email directly.');
       }
     } catch {
-      showToast('âš ï¸ Could not connect. Please check your internet and try again.');
+      showToast('⚠️ Could not connect. Please check your internet and try again.');
     }
   });
 
   // contact form
   document.getElementById('contactForm').addEventListener('submit', e => {
     e.preventDefault();
-    showToast('âœ‰ï¸ Message sent! We\'ll get back to you shortly.');
+    showToast('✉️ Message sent! We\'ll get back to you shortly.');
     e.target.reset();
   });
 

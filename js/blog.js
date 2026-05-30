@@ -373,17 +373,17 @@ async function handleNewsletter(e) {
     });
     const t = document.getElementById('toast');
     if (res.ok) {
-      t.textContent = 'ðŸŒ² You\'re on the trail list! First email coming soon.';
+      t.textContent = '🌲 You\'re on the trail list! First email coming soon.';
       form.reset();
     } else {
-      t.textContent = 'âš ï¸ Something went wrong. Please try again.';
+      t.textContent = '⚠️ Something went wrong. Please try again.';
     }
     t.style.transform = 'translateY(0)';
     t.style.opacity = '1';
     setTimeout(() => { t.style.transform = 'translateY(100px)'; t.style.opacity = '0'; }, 4000);
   } catch {
     const t = document.getElementById('toast');
-    t.textContent = 'âš ï¸ Could not connect. Please check your internet and try again.';
+    t.textContent = '⚠️ Could not connect. Please check your internet and try again.';
     t.style.transform = 'translateY(0)'; t.style.opacity = '1';
     setTimeout(() => { t.style.transform = 'translateY(100px)'; t.style.opacity = '0'; }, 4000);
   }
