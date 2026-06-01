@@ -1,97 +1,111 @@
-﻿  // cursor
-  const dot  = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-  const cur  = document.getElementById('cursor');
-  let mx = 0, my = 0, rx = 0, ry = 0;
+/* ═══════════════════════════════════════════════════
+   TPM TRAIL CO. — main.js
+═══════════════════════════════════════════════════ */
 
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    dot.style.left  = mx + 'px';
-    dot.style.top   = my + 'px';
-  });
+// ── custom cursor ──
+const cursorEl = document.getElementById('cursor');
+const dot      = document.getElementById('cursorDot');
+const ring     = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
 
-  (function animRing() {
-    rx += (mx - rx) * .12;
-    ry += (my - ry) * .12;
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    requestAnimationFrame(animRing);
-  })();
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx + 'px';
+  dot.style.top  = my + 'px';
+});
 
-  document.querySelectorAll('a,button,input,select,textarea,.service-card').forEach(el => {
-    el.addEventListener('mouseenter', () => cur.classList.add('cursor-expand'));
-    el.addEventListener('mouseleave', () => cur.classList.remove('cursor-expand'));
-  });
+(function animRing() {
+  rx += (mx - rx) * .12;
+  ry += (my - ry) * .12;
+  ring.style.left = rx + 'px';
+  ring.style.top  = ry + 'px';
+  requestAnimationFrame(animRing);
+})();
 
-  // nav scroll
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  });
+document.querySelectorAll('a, button, input, select, textarea, .service-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cursorEl.classList.add('cursor-expand'));
+  el.addEventListener('mouseleave', () => cursorEl.classList.remove('cursor-expand'));
+});
 
-  // reveal on scroll
-  const revealEls = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: .12 });
-  revealEls.forEach(el => obs.observe(el));
+// ── nav scroll state ──
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
 
-  // toast
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 4000);
-  }
-
-  // booking form
-  document.getElementById('bookingForm').addEventListener('submit', async e => {
-    e.preventDefault();
-    const form = e.target;
-    const data = new FormData(form);
-    try {
-      const res = await fetch('https://formspree.io/f/maqvnqqd', {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        showToast('🌲 Booking request sent! James will be in touch within 24 hours.');
-        form.reset();
-      } else {
-        showToast('⚠️ Something went wrong. Please try again or email directly.');
-      }
-    } catch {
-      showToast('⚠️ Could not connect. Please check your internet and try again.');
+// ── scroll reveal ──
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      revealObs.unobserve(entry.target);
     }
   });
+}, { threshold: .12 });
 
-  // contact form
-  document.getElementById('contactForm').addEventListener('submit', e => {
-    e.preventDefault();
-    showToast('✉️ Message sent! We\'ll get back to you shortly.');
-    e.target.reset();
-  });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-// MOBILE NAV DRAWER
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ── toast ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+// ── smooth scroll helper ──
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100);
+}
+
+// ── booking form ──
+document.getElementById('bookingForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const form = e.target;
+  const btn  = form.querySelector('.form-submit');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/maqvnqqd', {
+      method:  'POST',
+      body:    new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      showToast('🌲 Booking request sent! James will be in touch within 24 hours.');
+      form.reset();
+    } else {
+      showToast('⚠️ Something went wrong. Please try again or email directly.');
+    }
+  } catch {
+    showToast('⚠️ Could not connect. Please check your internet and try again.');
+  } finally {
+    btn.textContent = 'Send booking request →';
+    btn.disabled = false;
+  }
+});
+
+// ── contact form ──
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  showToast('✉️ Message sent! We\'ll get back to you shortly.');
+  e.target.reset();
+});
+
+// ── mobile nav drawer ──
 function toggleDrawer() {
-  const btn = document.getElementById('navHamburger');
+  const btn    = document.getElementById('navHamburger');
   const drawer = document.getElementById('navDrawer');
-  const open = btn.classList.toggle('open');
+  const open   = btn.classList.toggle('open');
   drawer.classList.toggle('open', open);
   btn.setAttribute('aria-expanded', open);
   drawer.setAttribute('aria-hidden', !open);
   document.body.style.overflow = open ? 'hidden' : '';
 }
+
 function closeDrawer() {
-  const btn = document.getElementById('navHamburger');
+  const btn    = document.getElementById('navHamburger');
   const drawer = document.getElementById('navDrawer');
   btn.classList.remove('open');
   drawer.classList.remove('open');
@@ -100,52 +114,52 @@ function closeDrawer() {
   document.body.style.overflow = '';
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-// PAGE SWITCHER â€” single-file SPA router
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeDrawer(); closeArticleBtn(); }
+});
+
+// ── page switcher ──
+const MAIN_SECTIONS = ['hero', 'mission', 'services', 'booking', 'about', 'testimonials', 'contact'];
+
 function showPage(page) {
-  const blog = document.getElementById('blogPage');
+  const blogPage   = document.getElementById('blogPage');
   const navJournal = document.getElementById('navJournal');
-  const mainSections = ['hero','mission','services','booking','about','testimonials','contact'];
-  const mainEls = mainSections.map(id => document.getElementById(id)).filter(Boolean);
+  const mainEls    = MAIN_SECTIONS.map(id => document.getElementById(id)).filter(Boolean);
   const mainFooter = document.querySelector('footer');
 
   if (page === 'blog') {
     mainEls.forEach(el => el.style.display = 'none');
     if (mainFooter) mainFooter.style.display = 'none';
-    if (blog) blog.style.display = 'block';
-    if (navJournal) navJournal.style.color = 'var(--gold)';
+    blogPage.style.display = 'block';
+    if (navJournal) navJournal.classList.add('active');
     window.scrollTo(0, 0);
-    if (blog && !blog.dataset.initialized) {
-      blog.dataset.initialized = 'true';
-      // Show loading state
+
+    if (!blogPage.dataset.initialized) {
+      blogPage.dataset.initialized = 'true';
       const fc = document.getElementById('featuredContainer');
       const pg = document.getElementById('postsGrid');
-      if (fc) fc.innerHTML = '<p style="font-family:var(--ff-m);font-size:.8rem;color:var(--sage);padding:2rem 0;letter-spacing:.1em">Loading posts...</p>';
+      if (fc) fc.innerHTML = '<p style="font-family:var(--ff-mono);font-size:.8rem;color:var(--sage);padding:2rem 0;letter-spacing:.1em">Loading posts…</p>';
       if (pg) pg.innerHTML = '';
-      // Load CMS posts then render
       loadCMSPosts().then(() => {
         renderGrid(ALL_POSTS);
         renderRecent();
-        const filterCount = document.getElementById('filterCount');
-        if (filterCount) filterCount.textContent = ALL_POSTS.length + ' posts';
+        const fc2 = document.getElementById('filterCount');
+        if (fc2) fc2.textContent = ALL_POSTS.length + ' posts';
       });
     }
   } else {
     mainEls.forEach(el => el.style.display = '');
     if (mainFooter) mainFooter.style.display = '';
-    if (blog) blog.style.display = 'none';
-    if (navJournal) navJournal.style.color = '';
+    blogPage.style.display = 'none';
+    if (navJournal) navJournal.classList.remove('active');
     window.scrollTo(0, 0);
   }
 }
 
-// nav logo click always goes home
-const navLogoEl = document.querySelector('.nav-logo');
-if (navLogoEl) {
-  navLogoEl.addEventListener('click', (e) => {
-    e.preventDefault();
-    showPage('main');
-  });
+// ── service prefill ──
+function prefillService(value) {
+  setTimeout(() => {
+    const sel = document.getElementById('b-service');
+    if (sel) sel.value = value;
+  }, 150);
 }
-

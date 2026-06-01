@@ -1,28 +1,30 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TPM Trail Co. â€” Guided Hiking & Backpacking in New England</title>
+<title>TPM Trail Co. — Guided Hiking & Backpacking in New England</title>
 
 <!-- SEO: core -->
 <meta name="description" content="TPM Trail Co. offers guided hiking, multi-day backpacking, and private nature retreats across New England's most iconic trails. Book a day hike, overnight trip, or custom experience with guide James Rivera.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://tpmtrailco.com/">
 
-<!-- SEO: Open Graph (Facebook / social sharing) -->
+<!-- SEO: Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tpmtrailco.com/">
-<meta property="og:title" content="TPM Trail Co. â€” Guided Hiking & Backpacking in New England">
+<meta property="og:title" content="TPM Trail Co. — Guided Hiking & Backpacking in New England">
 <meta property="og:description" content="Guided hiking, multi-day backpacking, and private nature retreats across New England. For every level. For every soul.">
 <meta property="og:site_name" content="TPM Trail Co.">
+<meta property="og:image" content="https://tpmtrailco.com/images/james.jpg">
 
 <!-- SEO: Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="TPM Trail Co. â€” Guided Hiking & Backpacking in New England">
+<meta name="twitter:title" content="TPM Trail Co. — Guided Hiking & Backpacking in New England">
 <meta name="twitter:description" content="Guided hiking, multi-day backpacking, and private nature retreats across New England. For every level. For every soul.">
+<meta name="twitter:image" content="https://tpmtrailco.com/images/james.jpg">
 
-<!-- SEO: Structured data â€” LocalBusiness -->
+<!-- SEO: Structured data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -32,63 +34,28 @@
   "description": "Guided hiking, multi-day backpacking, custom private trips, and nature retreats across New England.",
   "url": "https://tpmtrailco.com/",
   "foundingDate": "2026",
-  "areaServed": {
-    "@type": "GeoCircle",
-    "description": "New England, USA"
-  },
-  "employee": {
-    "@type": "Person",
-    "name": "James Rivera",
-    "jobTitle": "Lead Guide"
-  },
+  "areaServed": { "@type": "GeoCircle", "description": "New England, USA" },
+  "employee": { "@type": "Person", "name": "James Rivera", "jobTitle": "Lead Guide" },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Guided Outdoor Experiences",
     "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Guided Day Hikes",
-          "description": "Single-day guided hiking trips on New England trails."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Multi-Day Backpacking",
-          "description": "Overnight and multi-day guided backpacking trips across New England."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Custom & Private Trips",
-          "description": "Private group and custom itinerary bookings for any fitness level."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Gear Rental & Shuttles",
-          "description": "Gear rental and trailhead shuttle logistics for hikers."
-        }
-      }
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Guided Day Hikes","description":"Single-day guided hiking trips on New England trails."}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Multi-Day Backpacking","description":"Overnight and multi-day guided backpacking trips across New England."}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Custom & Private Trips","description":"Private group and custom itinerary bookings for any fitness level."}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Gear Rental & Shuttles","description":"Gear rental and trailhead shuttle logistics for hikers."}}
     ]
   }
 }
 </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-<!-- cursor -->
+<!-- custom cursor -->
 <div class="cursor" id="cursor">
   <div class="cursor-ring" id="cursorRing"></div>
   <div class="cursor-dot" id="cursorDot"></div>
@@ -98,13 +65,13 @@
 <nav id="navbar">
   <a href="#" onclick="showPage('main'); window.scrollTo(0,0); return false;" class="nav-logo">TPM <span>Trail Co.</span></a>
   <ul class="nav-links">
-    <li><a href="#" onclick="showPage('main'); setTimeout(()=>document.getElementById('services').scrollIntoView({behavior:'smooth'}),100); return false;">Services</a></li>
-    <li><a href="#" onclick="showPage('main'); setTimeout(()=>document.getElementById('about').scrollIntoView({behavior:'smooth'}),100); return false;">About</a></li>
-    <li><a href="#" onclick="showPage('main'); setTimeout(()=>document.getElementById('booking').scrollIntoView({behavior:'smooth'}),100); return false;">Book</a></li>
+    <li><a href="#" onclick="showPage('main'); scrollToId('services'); return false;">Services</a></li>
+    <li><a href="#" onclick="showPage('main'); scrollToId('about'); return false;">About</a></li>
+    <li><a href="#" onclick="showPage('main'); scrollToId('booking'); return false;">Book</a></li>
     <li><a href="#" onclick="showPage('blog'); return false;" id="navJournal">Journal</a></li>
-    <li><a href="#" onclick="showPage('main'); setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),100); return false;">Contact</a></li>
+    <li><a href="#" onclick="showPage('main'); scrollToId('contact'); return false;">Contact</a></li>
   </ul>
-  <button class="nav-book" onclick="showPage('main'); setTimeout(()=>document.getElementById('booking').scrollIntoView({behavior:'smooth'}),100)">Book a hike</button>
+  <button class="nav-book" onclick="showPage('main'); scrollToId('booking');">Book a hike</button>
   <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false" onclick="toggleDrawer()">
     <span></span><span></span><span></span>
   </button>
@@ -113,11 +80,11 @@
 <!-- mobile nav drawer -->
 <div class="nav-drawer" id="navDrawer" aria-hidden="true">
   <a href="#" onclick="closeDrawer(); showPage('main'); window.scrollTo(0,0); return false;">Home</a>
-  <a href="#" onclick="closeDrawer(); showPage('main'); setTimeout(()=>document.getElementById('services').scrollIntoView({behavior:'smooth'}),150); return false;">Services</a>
-  <a href="#" onclick="closeDrawer(); showPage('main'); setTimeout(()=>document.getElementById('about').scrollIntoView({behavior:'smooth'}),150); return false;">About</a>
+  <a href="#" onclick="closeDrawer(); showPage('main'); scrollToId('services'); return false;">Services</a>
+  <a href="#" onclick="closeDrawer(); showPage('main'); scrollToId('about'); return false;">About</a>
   <a href="#" onclick="closeDrawer(); showPage('blog'); return false;">Journal</a>
-  <a href="#" onclick="closeDrawer(); showPage('main'); setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),150); return false;">Contact</a>
-  <button class="drawer-book" onclick="closeDrawer(); showPage('main'); setTimeout(()=>document.getElementById('booking').scrollIntoView({behavior:'smooth'}),150)">Book a hike</button>
+  <a href="#" onclick="closeDrawer(); showPage('main'); scrollToId('contact'); return false;">Contact</a>
+  <button class="drawer-book" onclick="closeDrawer(); showPage('main'); scrollToId('booking');">Book a hike</button>
 </div>
 
 <!-- hero -->
@@ -126,15 +93,15 @@
   <div class="hero-trees"></div>
   <div class="hero-grain"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">New England Â· Est. 2026</p>
+    <p class="hero-eyebrow">New England · Est. 2026</p>
     <h1 class="hero-title">
       The Trail Is<br>
       <em>Your Medicine.</em>
     </h1>
-    <p class="hero-sub">Guided hiking & nature retreats across New England's most sacred trails. For every level. For every soul.</p>
+    <p class="hero-sub">Guided hiking &amp; nature retreats across New England's most sacred trails. For every level. For every soul.</p>
     <div class="hero-ctas">
-      <a href="#services" class="btn-primary">Explore experiences</a>
-      <a href="#about" class="btn-outline">Meet James</a>
+      <button class="btn-primary" onclick="scrollToId('services')">Explore experiences</button>
+      <button class="btn-outline" onclick="scrollToId('about')">Meet James</button>
     </div>
   </div>
   <div class="hero-scroll">
@@ -147,8 +114,8 @@
 <section id="mission">
   <div class="container">
     <blockquote>
-      To share the wonder of the outdoors, use nature as medicine, and guide every hiker â€” of any level â€” to heal, connect, and care for the wild places we love.
-      <cite>â€” James Rivera, Founder</cite>
+      To share the wonder of the outdoors, use nature as medicine, and guide every hiker — of any level — to heal, connect, and care for the wild places we love.
+      <cite>— James Rivera, Founder</cite>
     </blockquote>
   </div>
 </section>
@@ -162,66 +129,61 @@
       <p class="section-body">Every outing is led by James with a focus on mindfulness, trail education, and genuine human connection. Small groups, big impact.</p>
     </div>
     <div class="services-grid reveal">
-      <a href="#booking" class="service-card-link" onclick="setTimeout(()=>{document.getElementById('b-service').value='Guided Hike (Half-Day)'},100)">
-      <div class="service-card">
+
+      <div class="service-card" onclick="showPage('main'); scrollToId('booking'); prefillService('Guided Hike (Half-Day)');">
         <span class="service-icon">🌅</span>
         <span class="service-tag">Most popular</span>
         <div class="service-name">Guided Hike</div>
-        <p class="service-desc">Half-day or full-day guided experiences across New England's most scenic trails. Perfect for all levels â€” from first-timers to seasoned hikers looking to explore somewhere new. Themed options include sunrise hikes, fall foliage, and waterfall routes.</p>
-        <p class="service-price"><strong>$65 â€“ $145</strong> / person &nbsp;Â·&nbsp; Groups of 2â€“8 &nbsp;Â·&nbsp; Half or full day</p>
-        <span class="book-now">Book this experience â†’</span>
+        <p class="service-desc">Half-day or full-day guided experiences across New England's most scenic trails. Perfect for all levels — from first-timers to seasoned hikers. Themed options include sunrise hikes, fall foliage, and waterfall routes.</p>
+        <p class="service-price"><strong>$65 – $145</strong> / person &nbsp;·&nbsp; Groups of 2–8 &nbsp;·&nbsp; Half or full day</p>
+        <span class="book-now">Book this experience →</span>
       </div>
-      </a>
-      <a href="#booking" class="service-card-link" onclick="setTimeout(()=>{document.getElementById('b-service').value='Overnight / Multi-Day Backpacking'},100)">
-      <div class="service-card">
+
+      <div class="service-card" onclick="showPage('main'); scrollToId('booking'); prefillService('Overnight / Multi-Day Backpacking');">
         <span class="service-icon">🏕️</span>
         <span class="service-tag">Multi-day</span>
-        <div class="service-name">Overnight & Multi-Day Backpacking</div>
-        <p class="service-desc">Go deeper into the wilderness on a guided overnight or multi-day backpacking trip through New England's backcountry. James handles route planning, safety, and camp setup â€” you just show up and experience it. Perfect for those ready to take the next step beyond a day hike.</p>
-        <p class="service-price"><strong>$250 â€“ $450</strong> / person &nbsp;Â·&nbsp; Groups of 2â€“6 &nbsp;Â·&nbsp; 1â€“3 nights</p>
-        <span class="book-now">Book this experience â†’</span>
+        <div class="service-name">Overnight &amp; Multi-Day Backpacking</div>
+        <p class="service-desc">Go deeper into the wilderness on a guided overnight or multi-day backpacking trip. James handles route planning, safety, and camp setup — you just show up and experience it.</p>
+        <p class="service-price"><strong>$250 – $450</strong> / person &nbsp;·&nbsp; Groups of 2–6 &nbsp;·&nbsp; 1–3 nights</p>
+        <span class="book-now">Book this experience →</span>
       </div>
-      </a>
-      <a href="#booking" class="service-card-link" onclick="setTimeout(()=>{document.getElementById('b-service').value='Nature Wellness Retreat'},100)">
-      <div class="service-card">
+
+      <div class="service-card" onclick="showPage('main'); scrollToId('booking'); prefillService('Nature Wellness Retreat');">
         <span class="service-icon">🌿</span>
         <span class="service-tag">Wellness</span>
         <div class="service-name">Nature Wellness Retreat</div>
-        <p class="service-desc">Half-day or full weekend immersive retreats combining guided hiking, mindfulness, and nature therapy. Ideal for wellness groups.</p>
-        <p class="service-price"><strong>$120 â€“ $500</strong> / person &nbsp;Â·&nbsp; Groups of 2â€“8</p>
-        <span class="book-now">Book this experience â†’</span>
+        <p class="service-desc">Half-day or full weekend immersive retreats combining guided hiking, mindfulness, and nature therapy. Ideal for wellness groups looking to reconnect with the land.</p>
+        <p class="service-price"><strong>$120 – $500</strong> / person &nbsp;·&nbsp; Groups of 2–8</p>
+        <span class="book-now">Book this experience →</span>
       </div>
-      </a>
-      <a href="#booking" class="service-card-link" onclick="setTimeout(()=>{document.getElementById('b-service').value='Corporate Team Retreat'},100)">
-      <div class="service-card">
-        <span class="service-icon">🤝</span>
+
+      <div class="service-card" onclick="showPage('main'); scrollToId('booking'); prefillService('Corporate Team Retreat');">
+        <span class="service-icon">🤝</span>
         <span class="service-tag">Corporate</span>
         <div class="service-name">Corporate Team Retreat</div>
         <p class="service-desc">Purpose-built team experiences in nature. Reconnect your team away from the screen and into something that actually matters.</p>
-        <p class="service-price"><strong>$200 â€“ $350</strong> / person &nbsp;Â·&nbsp; Groups of 4â€“12</p>
-        <span class="book-now">Book this experience â†’</span>
+        <p class="service-price"><strong>$200 – $350</strong> / person &nbsp;·&nbsp; Groups of 4–12</p>
+        <span class="book-now">Book this experience →</span>
       </div>
-      </a>
-      <a href="#booking" class="service-card-link" onclick="setTimeout(()=>{document.getElementById('b-service').value='Snowshoe Hike'},100)">
-      <div class="service-card">
+
+      <div class="service-card" onclick="showPage('main'); scrollToId('booking'); prefillService('Snowshoe Hike');">
         <span class="service-icon">❄️</span>
         <span class="service-tag">Winter</span>
         <div class="service-name">Snowshoe Hike</div>
         <p class="service-desc">Experience New England's forests in their quietest, most magical season. Gear provided. No experience needed.</p>
-        <p class="service-price"><strong>$75 â€“ $95</strong> / person &nbsp;Â·&nbsp; Groups of 2â€“8</p>
-        <span class="book-now">Book this experience â†’</span>
+        <p class="service-price"><strong>$75 – $95</strong> / person &nbsp;·&nbsp; Groups of 2–8</p>
+        <span class="book-now">Book this experience →</span>
       </div>
-      </a>
-      <a href="#booking" class="service-card-link" onclick="setTimeout(()=>{document.getElementById('b-service').value='Private Group Booking'},100)">
-      <div class="service-card">
+
+      <div class="service-card" onclick="showPage('main'); scrollToId('booking'); prefillService('Private Group Booking');">
         <span class="service-icon">✨</span>
         <span class="service-tag">Private</span>
         <div class="service-name">Private Group Booking</div>
         <p class="service-desc">Custom experiences for birthdays, bachelorettes, family reunions, or any occasion worth celebrating in the wild.</p>
-        <p class="service-price"><strong>Custom pricing</strong> &nbsp;Â·&nbsp; Any group size</p>
-        <span class="book-now">Book this experience â†’</span>
+        <p class="service-price"><strong>Custom pricing</strong> &nbsp;·&nbsp; Any group size</p>
+        <span class="book-now">Book this experience →</span>
       </div>
-      </a>
+
     </div>
   </div>
 </section>
@@ -235,43 +197,43 @@
     </div>
     <div class="booking-layout">
       <div class="booking-info reveal">
-        <p>All hikes and retreats are led personally by James. Spots fill fast â€” especially in peak foliage season and for weekend retreats.</p>
+        <p>All hikes and retreats are led personally by James. Spots fill fast — especially in peak foliage season and for weekend retreats.</p>
         <p>Once you submit a request, James will reach out within 24 hours to confirm availability and share everything you need to know before your hike.</p>
         <ul class="booking-perks">
-          <li>All skill levels welcome â€” no experience needed</li>
-          <li>Small groups of 2â€“8 for a personal experience</li>
+          <li>All skill levels welcome — no experience needed</li>
+          <li>Small groups of 2–8 for a personal experience</li>
           <li>Safety gear and first aid always on hand</li>
           <li>Seasonal route selection for the best conditions</li>
-          <li>Flexible cancellation â€” life happens on the trail too</li>
+          <li>Flexible cancellation — life happens on the trail too</li>
         </ul>
       </div>
       <div class="booking-form reveal">
         <div class="form-title">Request a Booking</div>
         <form id="bookingForm">
-          <input type="hidden" name="_subject" value="New Booking Request â€” TPM Trail Co.">
+          <input type="hidden" name="_subject" value="New Booking Request — TPM Trail Co.">
           <div class="form-row">
             <div class="form-group">
               <label for="b-first">First name</label>
-              <input type="text" id="b-first" name="first_name" placeholder="First name">
+              <input type="text" id="b-first" name="first_name" placeholder="First name" autocomplete="given-name">
             </div>
             <div class="form-group">
               <label for="b-last">Last name</label>
-              <input type="text" id="b-last" name="last_name" placeholder="Last name">
+              <input type="text" id="b-last" name="last_name" placeholder="Last name" autocomplete="family-name">
             </div>
           </div>
           <div class="form-group">
             <label for="b-email">Email address</label>
-            <input type="email" id="b-email" name="email" placeholder="you@email.com">
+            <input type="email" id="b-email" name="email" placeholder="you@email.com" autocomplete="email">
           </div>
           <div class="form-group">
             <label for="b-phone">Phone number</label>
-            <input type="tel" id="b-phone" name="phone" placeholder="(617) 555-0100">
+            <input type="tel" id="b-phone" name="phone" placeholder="(617) 555-0100" autocomplete="tel">
           </div>
           <div class="form-row">
             <div class="form-group">
               <label for="b-service">Experience type</label>
               <select id="b-service" name="experience_type">
-                <option value="">Select oneâ€¦</option>
+                <option value="">Select one…</option>
                 <option>Guided Hike (Half-Day)</option>
                 <option>Guided Hike (Full-Day)</option>
                 <option>Overnight / Multi-Day Backpacking</option>
@@ -284,25 +246,26 @@
             <div class="form-group">
               <label for="b-group">Group size</label>
               <select id="b-group" name="group_size">
-                <option value="">Selectâ€¦</option>
-                <option>1â€“2 people</option>
-                <option>3â€“4 people</option>
-                <option>5â€“6 people</option>
-                <option>7â€“8 people</option>
+                <option value="">Select…</option>
+                <option>Just me</option>
+                <option>2 people</option>
+                <option>3–4 people</option>
+                <option>5–6 people</option>
+                <option>7–8 people</option>
                 <option>9+ people</option>
               </select>
             </div>
           </div>
           <div class="form-group">
-            <label for="b-date">Preferred date</label>
-            <input type="date" id="b-date" name="preferred_date">
+            <label for="b-date">Preferred date(s)</label>
+            <input type="text" id="b-date" name="preferred_dates" placeholder="e.g. Any weekend in October">
           </div>
           <div class="form-group">
-            <label for="b-notes">Anything we should know?</label>
-            <textarea id="b-notes" name="notes" placeholder="Fitness level, special requests, questionsâ€¦"></textarea>
+            <label for="b-msg">Anything else?</label>
+            <textarea id="b-msg" name="message" placeholder="Fitness level, special requests, questions…"></textarea>
           </div>
-          <button type="submit" class="form-submit">Send Booking Request â†’</button>
-          <p class="form-note">We'll confirm within 24 hours Â· No payment required upfront</p>
+          <button type="submit" class="form-submit">Send booking request →</button>
+          <p class="form-note">No payment required now — James will confirm availability first.</p>
         </form>
       </div>
     </div>
@@ -316,19 +279,19 @@
       <div class="about-visual reveal">
         <div class="about-photo-frame">
           <picture>
-          <source srcset="images/james.webp" type="image/webp">
-          <img src="images/james.jpg" alt="James Rivera, TPM Trail Co. founder and lead guide" loading="lazy" width="600" height="800">
-        </picture>
+            <source srcset="images/james.webp" type="image/webp">
+            <img src="images/james.jpg" alt="James Rivera, TPM Trail Co. founder and lead guide" loading="lazy" width="600" height="800">
+          </picture>
         </div>
-        <div class="about-tag">Founder Â· Trail Guide</div>
+        <div class="about-tag">Founder · Trail Guide</div>
       </div>
       <div class="about-text reveal">
-        <p class="section-label">About the founder</p>
+        <p class="section-label">Your guide</p>
         <h2 class="section-title">James<br><em>Rivera</em></h2>
-        <p class="section-body">James left behind a career in cannabis to turn a lifelong passion for nature into a calling â€” helping people find healing, wonder, and community on the trails of New England.</p>
-        <p class="section-body" style="margin-top:1rem;">With years exploring the forests, summits, and hidden corners of the Northeast, James knows firsthand the quiet power that nature holds. That knowledge didn't stay personal for long â€” it became a mission.</p>
-        <p class="section-body" style="margin-top:1rem;">Every hike is guided with intentionality, safety, and a genuine belief that the outdoors can heal what modern life breaks.</p>
-        <p class="about-sig">The trail is waiting.</p>
+        <p class="section-body">James Rivera has spent years exploring the forests, summits, and hidden corners of New England's trail system. What started as a personal practice became a calling — to share the restorative power of wild places with anyone willing to lace up their boots.</p>
+        <p class="section-body" style="margin-top:1rem;">TPM Trail Co. — The People's Medicine — is built on the belief that nature is not a luxury. It's medicine. Every guided hike is an invitation to slow down, look closer, and remember what the land has always known.</p>
+        <p class="section-body" style="margin-top:1rem;">Wilderness First Aid certified. Leave No Trace trained. Lifelong student of the trail.</p>
+        <p class="about-sig">— James</p>
       </div>
     </div>
   </div>
@@ -339,23 +302,23 @@
   <div class="container">
     <div class="reveal">
       <p class="section-label">From the trail</p>
-      <h2 class="section-title" style="color:var(--white)">What hikers<br><em style="color:var(--fern)">are saying</em></h2>
+      <h2 class="section-title" style="color:var(--white)">What hikers<br><em>are saying</em></h2>
     </div>
-    <div class="testimonials-grid reveal">
-      <div class="testimonial-card">
-        <div class="testimonial-stars">â˜…â˜…â˜…â˜…â˜…</div>
-        <p class="testimonial-text">"I hadn't been hiking in years and James made me feel completely at ease. By the summit I was crying â€” in the best possible way."</p>
-        <p class="testimonial-author">â€” Tessa R., Boston</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"James has a way of turning a hike into something much deeper. I came for the summit view. I left with a completely different relationship with the outdoors."</p>
+        <div class="testimonial-author">Sarah M. — Boston, MA</div>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars">â˜…â˜…â˜…â˜…â˜…</div>
-        <p class="testimonial-text">"We booked the corporate retreat for our team of 8. Best team-building we've ever done. No PowerPoints, just real connection."</p>
-        <p class="testimonial-author">â€” Lisa K., Cambridge</p>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Took our team on a corporate retreat — best team-building we've ever done. No trust falls, just real wilderness and honest conversation. Highly recommend."</p>
+        <div class="testimonial-author">Marcus T. — Cambridge, MA</div>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars">â˜…â˜…â˜…â˜…â˜…</div>
-        <p class="testimonial-text">"James knows every inch of these trails. The foliage hike in October was absolutely otherworldly. Already booked again for spring."</p>
-        <p class="testimonial-author">â€” Richard J., Providence</p>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"I've never considered myself a hiker. James changed that in one morning on the Blue Hills. I've booked three more hikes since."</p>
+        <div class="testimonial-author">Priya K. — Providence, RI</div>
       </div>
     </div>
   </div>
@@ -366,67 +329,54 @@
   <div class="container">
     <div class="reveal">
       <p class="section-label">Get in touch</p>
-      <h2 class="section-title">Questions?<br><em>Let's talk.</em></h2>
+      <h2 class="section-title">Have a question?<br><em>Let's talk.</em></h2>
     </div>
     <div class="contact-layout">
       <div class="contact-form reveal">
         <form id="contactForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="c-name">Your name</label>
-              <input type="text" id="c-name" placeholder="Full name">
-            </div>
-            <div class="form-group">
-              <label for="c-email">Email</label>
-              <input type="email" id="c-email" placeholder="you@email.com">
-            </div>
+          <input type="hidden" name="_subject" value="Contact Form — TPM Trail Co.">
+          <div class="form-group">
+            <label for="c-name">Your name</label>
+            <input type="text" id="c-name" name="name" placeholder="Full name" autocomplete="name">
           </div>
           <div class="form-group">
-            <label for="c-subject">Subject</label>
-            <select id="c-subject">
-              <option value="">What's this about?</option>
-              <option>General question</option>
-              <option>Booking inquiry</option>
-              <option>Corporate retreat</option>
-              <option>Private group</option>
-              <option>Press / media</option>
-              <option>Partnership</option>
-            </select>
+            <label for="c-email">Email address</label>
+            <input type="email" id="c-email" name="email" placeholder="you@email.com" autocomplete="email">
           </div>
           <div class="form-group">
             <label for="c-msg">Message</label>
-            <textarea id="c-msg" placeholder="Tell us what's on your mindâ€¦" style="min-height:130px;"></textarea>
+            <textarea id="c-msg" name="message" placeholder="What's on your mind?"></textarea>
           </div>
-          <button type="submit" class="form-submit">Send Message â†’</button>
+          <button type="submit" class="form-submit">Send message →</button>
         </form>
       </div>
       <div class="contact-info reveal">
         <div class="contact-info-item">
-          <div class="contact-icon">ðŸ“</div>
+          <span class="contact-icon">🗺️</span>
           <div>
-            <p class="contact-info-label">Based in</p>
-            <p class="contact-info-value">New England, USA<br>Serving all of the Northeast</p>
+            <div class="contact-info-label">Service area</div>
+            <div class="contact-info-value">New England — Massachusetts, New Hampshire, Vermont, Maine, Connecticut, Rhode Island</div>
           </div>
         </div>
         <div class="contact-info-item">
-          <div class="contact-icon">ðŸ“…</div>
+          <span class="contact-icon">✉️</span>
           <div>
-            <p class="contact-info-label">Season</p>
-            <p class="contact-info-value">May through November<br>Winter snowshoe hikes available</p>
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-value">james@tpmtrailco.com</div>
           </div>
         </div>
         <div class="contact-info-item">
-          <div class="contact-icon">â±</div>
+          <span class="contact-icon">⏱️</span>
           <div>
-            <p class="contact-info-label">Response time</p>
-            <p class="contact-info-value">Within 24 hours<br>Usually much sooner</p>
+            <div class="contact-info-label">Response time</div>
+            <div class="contact-info-value">Within 24 hours, usually sooner</div>
           </div>
         </div>
         <div class="contact-info-item">
-          <div class="contact-icon">ðŸ“±</div>
+          <span class="contact-icon">📅</span>
           <div>
-            <p class="contact-info-label">Follow along</p>
-            <p class="contact-info-value">@tpmtrailco on Instagram & TikTok</p>
+            <div class="contact-info-label">Booking window</div>
+            <div class="contact-info-value">Available year-round. Peak season (May–October) books fast — reach out early.</div>
           </div>
         </div>
       </div>
@@ -438,40 +388,36 @@
 <footer>
   <div>
     <div class="footer-logo">TPM <span>Trail Co.</span></div>
-    <div class="footer-tagline">The People's Medicine â€” New England</div>
+    <div class="footer-tagline">The People's Medicine</div>
   </div>
   <ul class="footer-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#booking">Book</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" onclick="scrollToId('services'); return false;">Services</a></li>
+    <li><a href="#" onclick="scrollToId('about'); return false;">About</a></li>
+    <li><a href="#" onclick="scrollToId('booking'); return false;">Book</a></li>
+    <li><a href="#" onclick="showPage('blog'); return false;">Journal</a></li>
+    <li><a href="#" onclick="scrollToId('contact'); return false;">Contact</a></li>
   </ul>
-  <div class="footer-copy">Â© 2026 TPM Trail Co. Â· All rights reserved</div>
+  <div class="footer-copy">© 2026 TPM Trail Co. · All rights reserved</div>
 </footer>
 
 <!-- toast -->
 <div class="toast" id="toast"></div>
 
-
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-     BLOG / JOURNAL PAGE (hidden by default, shown via JS)
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ═══════════════════════════════════════════════════
+     BLOG / JOURNAL PAGE
+═══════════════════════════════════════════════════ -->
 <div id="blogPage" style="display:none;">
-  <!-- CMS info banner -->
-  <div class="cms-banner">
-    🌲 
-  </div>
 
-  <!-- blog hero -->
+  <div class="cms-banner">🌲 Trail Journal — New stories added regularly</div>
+
   <div class="blog-hero">
     <div class="blog-hero-inner">
-      <p class="blog-eyebrow">TPM Trail Co. Â· New England</p>
+      <p class="blog-eyebrow">TPM Trail Co. · New England</p>
       <h1>The Trail<br><em>Journal</em></h1>
-      <p>Trip reports, trail history, ecology deep-dives, and gear guides from New England's backcountry â€” written by James Rivera.</p>
+      <p>Trip reports, trail history, ecology deep-dives, and gear guides from New England's backcountry — written by James Rivera.</p>
     </div>
   </div>
 
-  <!-- filters -->
   <div class="filters-bar">
     <div class="filters-inner">
       <button class="filter-btn active" onclick="filterPosts('all', this)">All Posts</button>
@@ -482,26 +428,24 @@
     </div>
   </div>
 
-  <!-- main blog layout -->
   <div class="blog-layout">
     <main>
       <div id="featuredContainer"></div>
       <div class="posts-grid" id="postsGrid"></div>
       <div class="empty-state" id="emptyState" style="display:none">
-        <p>No posts in this category yet â€” check back soon.</p>
+        <p>No posts in this category yet — check back soon.</p>
       </div>
     </main>
 
-    <!-- sidebar -->
     <aside class="sidebar">
       <div class="sidebar-widget">
         <div class="widget-title">Join the Trail List</div>
-        <p style="font-size:.95rem;color:#666;margin-bottom:.8rem;font-weight:300;line-height:1.6">Monthly trail highlights, early booking access, and seasonal guides â€” straight to your inbox.</p>
+        <p class="widget-body">Monthly trail highlights, early booking access, and seasonal guides — straight to your inbox.</p>
         <form class="newsletter-form" onsubmit="handleNewsletter(event)">
-          <input type="hidden" name="_subject" value="New Trail List Signup â€” TPM Trail Co.">
-          <input class="newsletter-input" type="text" name="name" placeholder="Your name" required>
-          <input class="newsletter-input" type="email" name="email" placeholder="Email address" required>
-          <button class="newsletter-btn" type="submit">Subscribe â†’</button>
+          <input type="hidden" name="_subject" value="New Trail List Signup — TPM Trail Co.">
+          <input class="newsletter-input" type="text" name="name" placeholder="Your name" required autocomplete="name">
+          <input class="newsletter-input" type="email" name="email" placeholder="Email address" required autocomplete="email">
+          <button class="newsletter-btn" type="submit">Subscribe →</button>
           <p class="newsletter-note">No spam. Unsubscribe anytime.</p>
         </form>
       </div>
@@ -524,10 +468,10 @@
           <span class="tag-pill" onclick="filterPosts('Gear', null)">Safety</span>
         </div>
       </div>
-      <div class="sidebar-widget" style="background:var(--forest);color:var(--white)">
-        <div class="widget-title" style="color:var(--gold);border-color:rgba(255,255,255,.1)">Ready to hit the trail?</div>
-        <p style="font-size:.95rem;color:rgba(255,255,255,.65);margin-bottom:1.2rem;font-weight:300;line-height:1.6">James guides hikers of every level across New England's best trails. Book your experience today.</p>
-        <a onclick="showPage('main'); setTimeout(()=>document.getElementById('booking').scrollIntoView({behavior:'smooth'}),150)" style="display:block;background:var(--gold);color:var(--forest);font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:.8rem;text-align:center;border-radius:2px;text-decoration:none;cursor:pointer;transition:background .2s">Book a hike â†’</a>
+      <div class="sidebar-widget sidebar-widget--dark">
+        <div class="widget-title widget-title--gold">Ready to hit the trail?</div>
+        <p class="widget-body widget-body--muted">James guides hikers of every level across New England's best trails. Book your experience today.</p>
+        <button class="sidebar-cta" onclick="showPage('main'); scrollToId('booking');">Book a hike →</button>
       </div>
     </aside>
   </div>
@@ -535,8 +479,10 @@
   <!-- article modal -->
   <div class="article-overlay" id="articleOverlay" onclick="closeArticle(event)">
     <div class="article-modal" id="articleModal">
-      <button class="article-close" onclick="closeArticleBtn()">âœ•</button>
-      <div class="article-hero-img"><div class="article-hero-img-bg" id="articleHeroImg"></div></div>
+      <button class="article-close" onclick="closeArticleBtn()" aria-label="Close article">✕</button>
+      <div class="article-hero-img">
+        <div class="article-hero-img-bg" id="articleHeroImg"></div>
+      </div>
       <div class="article-content">
         <div class="article-category" id="articleCat"></div>
         <h1 class="article-title" id="articleTitle"></h1>
@@ -544,22 +490,23 @@
         <div class="article-body" id="articleBody"></div>
         <div class="article-cta">
           <p>Ready to experience New England's trails with a guide who knows every inch of them?</p>
-          <a onclick="closeArticleBtn(); showPage('main'); setTimeout(()=>document.getElementById('booking').scrollIntoView({behavior:'smooth'}),150)" style="cursor:pointer">Book a hike with James â†’</a>
+          <button onclick="closeArticleBtn(); showPage('main'); scrollToId('booking');">Book a hike with James →</button>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+</div><!-- /blogPage -->
 
 <script src="js/main.js" defer></script>
 <script src="js/blog.js" defer></script>
 
 <script>
   if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
+    window.netlifyIdentity.on('init', user => {
       if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
+        window.netlifyIdentity.on('login', () => {
+          document.location.href = '/admin/';
         });
       }
     });
