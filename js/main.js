@@ -119,7 +119,7 @@ document.addEventListener('keydown', e => {
 });
 
 // ── page switcher ──
-const MAIN_SECTIONS = ['hero', 'mission', 'services', 'booking', 'about', 'testimonials', 'contact'];
+const MAIN_SECTIONS = ['hero', 'mission', 'services', 'booking', 'about', 'founding', 'contact'];
 
 function showPage(page) {
   const blogPage   = document.getElementById('blogPage');

@@ -6,7 +6,7 @@
 <title>TPM Trail Co. — Guided Hiking & Backpacking in New England</title>
 
 <!-- SEO: core -->
-<meta name="description" content="TPM Trail Co. offers guided hiking, multi-day backpacking, and private nature retreats across New England's most iconic trails. Book a day hike, overnight trip, or custom experience with guide James Rivera.">
+<meta name="description" content="TPM Trail Co. offers guided hiking, multi-day backpacking, and nature retreats across Connecticut, Massachusetts, and New Hampshire, with extended trips throughout New England. Book a day hike, overnight trip, or custom experience with guide James Rivera.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://tpmtrailco.com/">
 
@@ -14,14 +14,14 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tpmtrailco.com/">
 <meta property="og:title" content="TPM Trail Co. — Guided Hiking & Backpacking in New England">
-<meta property="og:description" content="Guided hiking, multi-day backpacking, and private nature retreats across New England. For every level. For every soul.">
+<meta property="og:description" content="Guided hiking, multi-day backpacking, and nature retreats across Connecticut, Massachusetts, and New Hampshire. For every level. For every soul.">
 <meta property="og:site_name" content="TPM Trail Co.">
 <meta property="og:image" content="https://tpmtrailco.com/images/james.jpg">
 
 <!-- SEO: Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="TPM Trail Co. — Guided Hiking & Backpacking in New England">
-<meta name="twitter:description" content="Guided hiking, multi-day backpacking, and private nature retreats across New England. For every level. For every soul.">
+<meta name="twitter:description" content="Guided hiking, multi-day backpacking, and nature retreats across Connecticut, Massachusetts, and New Hampshire. For every level. For every soul.">
 <meta name="twitter:image" content="https://tpmtrailco.com/images/james.jpg">
 
 <!-- SEO: Structured data -->
@@ -31,10 +31,14 @@
   "@type": "LocalBusiness",
   "name": "TPM Trail Co.",
   "alternateName": "The People's Medicine Trail Co.",
-  "description": "Guided hiking, multi-day backpacking, custom private trips, and nature retreats across New England.",
+  "description": "Guided hiking, multi-day backpacking, custom private trips, and nature retreats across Connecticut, Massachusetts, and New Hampshire, with extended trips throughout New England.",
   "url": "https://tpmtrailco.com/",
   "foundingDate": "2026",
-  "areaServed": { "@type": "GeoCircle", "description": "New England, USA" },
+  "areaServed": [
+    { "@type": "State", "name": "Connecticut" },
+    { "@type": "State", "name": "Massachusetts" },
+    { "@type": "State", "name": "New Hampshire" }
+  ],
   "employee": { "@type": "Person", "name": "James Rivera", "jobTitle": "Lead Guide" },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -43,7 +47,7 @@
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Guided Day Hikes","description":"Single-day guided hiking trips on New England trails."}},
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Multi-Day Backpacking","description":"Overnight and multi-day guided backpacking trips across New England."}},
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Custom & Private Trips","description":"Private group and custom itinerary bookings for any fitness level."}},
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Gear Rental & Shuttles","description":"Gear rental and trailhead shuttle logistics for hikers."}}
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Nature Wellness Retreats","description":"Half-day nature resets and weekend immersion retreats combining guided hiking, mindfulness, and rest."}}
     ]
   }
 }
@@ -114,7 +118,7 @@
 <section id="mission">
   <div class="container">
     <blockquote>
-      To share the wonder of the outdoors, use nature as medicine, and guide every hiker — of any level — to heal, connect, and care for the wild places we love.
+      Our mission is to share the wonder of the outdoors, use nature as medicine, and guide every hiker — of any level — to connect, heal, and care for the natural places we love.
       <cite>— James Rivera, Founder</cite>
     </blockquote>
   </div>
@@ -148,12 +152,21 @@
         <span class="book-now">Book this experience →</span>
       </div>
 
-      <div class="service-card" onclick="showPage('main'); scrollToId('booking'); prefillService('Nature Wellness Retreat');">
+      <div class="service-card" onclick="showPage('main'); scrollToId('booking'); prefillService('Half-Day Nature Reset');">
         <span class="service-icon">🌿</span>
         <span class="service-tag">Wellness</span>
-        <div class="service-name">Nature Wellness Retreat</div>
-        <p class="service-desc">Half-day or full weekend immersive retreats combining guided hiking, mindfulness, and nature therapy. Ideal for wellness groups looking to reconnect with the land.</p>
-        <p class="service-price"><strong>$120 – $500</strong> / person &nbsp;·&nbsp; Groups of 2–8</p>
+        <div class="service-name">Half-Day Nature Reset</div>
+        <p class="service-desc">A single morning or afternoon with the phone in your pack. We walk slowly, stop often, and spend real time paying attention — to the plants, the water, the quiet underneath it. You'll come out tired in the good way.</p>
+        <p class="service-price"><strong>$135</strong> / person &nbsp;·&nbsp; Groups of 2–8 &nbsp;·&nbsp; Half day</p>
+        <span class="book-now">Book this experience →</span>
+      </div>
+
+      <div class="service-card" onclick="showPage('main'); scrollToId('booking'); prefillService('Weekend Immersion');">
+        <span class="service-icon">🌲</span>
+        <span class="service-tag">Weekend</span>
+        <div class="service-name">Weekend Immersion</div>
+        <p class="service-desc">Two days in the woods with nowhere else to be. Guided hiking both days, mindfulness practice in the mornings, and long unhurried stretches with nothing scheduled at all. For anyone who needs more than a few hours to actually land.</p>
+        <p class="service-price"><strong>$450</strong> / person &nbsp;·&nbsp; Groups of 2–8 &nbsp;·&nbsp; 2 days</p>
         <span class="book-now">Book this experience →</span>
       </div>
 
@@ -166,13 +179,16 @@
         <span class="book-now">Book this experience →</span>
       </div>
 
-      <div class="service-card" onclick="showPage('main'); scrollToId('booking'); prefillService('Snowshoe Hike');">
+      <div class="service-card service-card--teaser">
         <span class="service-icon">❄️</span>
-        <span class="service-tag">Winter</span>
-        <div class="service-name">Snowshoe Hike</div>
-        <p class="service-desc">Experience New England's forests in their quietest, most magical season. Gear provided. No experience needed.</p>
-        <p class="service-price"><strong>$75 – $95</strong> / person &nbsp;·&nbsp; Groups of 2–8</p>
-        <span class="book-now">Book this experience →</span>
+        <span class="service-tag">Winter 2028</span>
+        <div class="service-name">Snowshoe &amp; Winter Hiking</div>
+        <p class="service-desc">Winter guiding is coming, but not yet. I want the right training and gear behind me before I take anyone out on snow — so it's planned for the 2028 season. Leave your email and you'll be the first to know.</p>
+        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+          <input type="hidden" name="_subject" value="Winter 2028 Waitlist — TPM Trail Co.">
+          <input class="newsletter-input" type="email" name="email" placeholder="Email address" required autocomplete="email">
+          <button class="newsletter-btn" type="submit">Notify me →</button>
+        </form>
       </div>
 
       <div class="service-card" onclick="showPage('main'); scrollToId('booking'); prefillService('Private Group Booking');">
@@ -237,9 +253,9 @@
                 <option>Guided Hike (Half-Day)</option>
                 <option>Guided Hike (Full-Day)</option>
                 <option>Overnight / Multi-Day Backpacking</option>
-                <option>Nature Wellness Retreat</option>
+                <option>Half-Day Nature Reset</option>
+                <option>Weekend Immersion</option>
                 <option>Corporate Team Retreat</option>
-                <option>Snowshoe Hike</option>
                 <option>Private Group Booking</option>
               </select>
             </div>
@@ -289,37 +305,44 @@
         <p class="section-label">Your guide</p>
         <h2 class="section-title">James<br><em>Rivera</em></h2>
         <p class="section-body">James Rivera has spent years exploring the forests, summits, and hidden corners of New England's trail system. What started as a personal practice became a calling — to share the restorative power of wild places with anyone willing to lace up their boots.</p>
-        <p class="section-body" style="margin-top:1rem;">TPM Trail Co. — The People's Medicine — is built on the belief that nature is not a luxury. It's medicine. Every guided hike is an invitation to slow down, look closer, and remember what the land has always known.</p>
-        <p class="section-body" style="margin-top:1rem;">Wilderness First Aid certified. Leave No Trace trained. Lifelong student of the trail.</p>
+        <p class="section-body" style="margin-top:1rem;">TPM Trail Co. — The People's Medicine — is built on the belief that nature heals the mind like medicine. Every guided hike is an invitation to slow down, look closer, and remember what the land has always known.</p>
+        <p class="section-body" style="margin-top:1rem;">Wilderness First Responder certified. Follows Leave No Trace principals. Lifelong student of the trail.</p>
         <p class="about-sig">— James</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- testimonials -->
-<section id="testimonials">
+<!-- founding season -->
+<section id="founding">
   <div class="container">
     <div class="reveal">
-      <p class="section-label">From the trail</p>
-      <h2 class="section-title" style="color:var(--white)">What hikers<br><em>are saying</em></h2>
+      <p class="section-label">Season one</p>
+      <h2 class="section-title" style="color:var(--white)">What you can<br><em>count on</em></h2>
+      <p class="section-body founding-intro">With over 25 years of hiking and camping experience, 2026 will be my first season out here as a guide. Whatever the trail gives us, you can count on these three things.</p>
     </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"James has a way of turning a hike into something much deeper. I came for the summit view. I left with a completely different relationship with the outdoors."</p>
-        <div class="testimonial-author">Sarah M. — Boston, MA</div>
+    <div class="founding-grid">
+      <div class="founding-card reveal">
+        <span class="founding-icon">🩹</span>
+        <div class="founding-card-title">Wilderness First Responder</div>
+        <p class="founding-card-body">Safety is my #1 goal! First Responder Certified and current, with a full kit on every trip. If something happens out there, it's handled with care.</p>
       </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"Took our team on a corporate retreat — best team-building we've ever done. No trust falls, just real wilderness and honest conversation. Highly recommend."</p>
-        <div class="testimonial-author">Marcus T. — Cambridge, MA</div>
+      <div class="founding-card reveal">
+        <span class="founding-icon">🌱</span>
+        <div class="founding-card-title">Leave No Trace</div>
+        <p class="founding-card-body">We leave the trail how we found it, or better. Stewardship is part of the hike.</p>
       </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"I've never considered myself a hiker. James changed that in one morning on the Blue Hills. I've booked three more hikes since."</p>
-        <div class="testimonial-author">Priya K. — Providence, RI</div>
+      <div class="founding-card reveal">
+        <span class="founding-icon">👣</span>
+        <div class="founding-card-title">Groups of 2–8</div>
+        <p class="founding-card-body">Two to eight people. Room to ask questions, go at your own pace, and never feel rushed.</p>
       </div>
+    </div>
+    <div class="founding-cta reveal">
+      <span class="founding-cta-label">Founding Season — 20% off</span>
+      <p class="founding-cta-text">The first 20 hikers of 2026 get 20% off a Fall foliage experience. All I ask in return is your honest feedback afterward. </p>
+      <button class="btn-primary" onclick="scrollToId('booking')">Claim a founding spot →</button>
+      <p class="form-note form-note--light">No payment required now — James will confirm availability first.</p>
     </div>
   </div>
 </section>
@@ -355,14 +378,15 @@
           <span class="contact-icon">🗺️</span>
           <div>
             <div class="contact-info-label">Service area</div>
-            <div class="contact-info-value">New England — Massachusetts, New Hampshire, Vermont, Maine, Connecticut, Rhode Island</div>
+            <div class="contact-info-value"><strong>Primary</strong>Connecticut, Massachusetts, New Hampshire</div>
+            <div class="contact-info-value contact-info-value--sub"><strong>Extended trips</strong>Vermont, Maine, Rhode Island by arrangement</div>
           </div>
         </div>
         <div class="contact-info-item">
           <span class="contact-icon">✉️</span>
           <div>
             <div class="contact-info-label">Email</div>
-            <div class="contact-info-value">james@tpmtrailco.com</div>
+            <div class="contact-info-value">james.comanyy@gmail.com</div>
           </div>
         </div>
         <div class="contact-info-item">
@@ -376,7 +400,7 @@
           <span class="contact-icon">📅</span>
           <div>
             <div class="contact-info-label">Booking window</div>
-            <div class="contact-info-value">Available year-round. Peak season (May–October) books fast — reach out early.</div>
+            <div class="contact-info-value">Season runs March–November. Peak season (May–October) books fast — reach out early. Winter guiding begins 2028.</div>
           </div>
         </div>
       </div>

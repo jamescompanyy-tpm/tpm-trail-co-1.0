@@ -362,6 +362,7 @@ async function handleNewsletter(e) {
   e.preventDefault();
   const form = e.target;
   const btn  = form.querySelector('.newsletter-btn');
+  const btnLabel = btn.textContent;
   btn.textContent = 'Sending…';
   btn.disabled = true;
   try {
@@ -370,7 +371,6 @@ async function handleNewsletter(e) {
       body:    new FormData(form),
       headers: { 'Accept': 'application/json' }
     });
-    const t = document.getElementById('toast');
     if (res.ok) {
       showToast('🌲 You\'re on the trail list! First email coming soon.');
       form.reset();
@@ -380,7 +380,7 @@ async function handleNewsletter(e) {
   } catch {
     showToast('⚠️ Could not connect. Please check your internet and try again.');
   } finally {
-    btn.textContent = 'Subscribe →';
+    btn.textContent = btnLabel;
     btn.disabled = false;
   }
 }
