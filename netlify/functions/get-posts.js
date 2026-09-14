@@ -21,6 +21,10 @@ function markdownToHtml(md) {
     // images before links — image syntax contains link syntax
     .replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, '<img src="$2" alt="$1" loading="lazy">')
     .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>')
+    // <https://…> and <name@domain> autolinks. Markdown renders these as links;
+    // without this they reach the browser as an unknown <https:> tag and vanish.
+    .replace(/<(https?:\/\/[^>\s]+)>/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>')
+    .replace(/<([^\s@<>]+@[^\s@<>]+\.[^\s@<>]+)>/g, '<a href="mailto:$1">$1</a>')
     .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
     .replace(/^\- (.+)$/gm, '<li>$1</li>')
     .replace(/(<li>[\s\S]+?<\/li>)(\n(?!<li>)|$)/g, '<ul>$1</ul>')
