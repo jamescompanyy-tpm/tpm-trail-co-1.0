@@ -143,8 +143,11 @@ function showPage(page) {
       loadCMSPosts().then(() => {
         renderGrid(ALL_POSTS);
         renderRecent();
-        const fc2 = document.getElementById('filterCount');
-        if (fc2) fc2.textContent = ALL_POSTS.length + ' posts';
+        const badge = document.getElementById('blogBadge');
+        if (badge && ALL_POSTS.length) {
+          badge.textContent = `🌲 ${ALL_POSTS.length} post${ALL_POSTS.length !== 1 ? 's' : ''}`;
+          badge.hidden = false;
+        }
       });
     }
   } else {

@@ -22,6 +22,8 @@
   --ff-display: 'Playfair Display', Georgia, serif;
   --ff-body:    'Crimson Pro', Georgia, serif;
   --ff-mono:    'DM Mono', monospace;
+  /* height of the fixed nav — anything sitting below it offsets by this */
+  --nav-h:      62px;
 }
 
 /* ── reset ── */
@@ -576,29 +578,42 @@ footer {
    BLOG / JOURNAL
 ═══════════════════════════════════════════════════ */
 
-.cms-banner {
-  background: var(--forest); color: rgba(255,255,255,.7);
-  font-family: var(--ff-mono); font-size: .65rem;
-  letter-spacing: .1em; text-align: center; padding: .6rem 1rem;
-}
 .blog-hero {
-  margin-top: 64px;
+  /* Runs up under the fixed nav on purpose: the nav is transparent until you
+     scroll, so it needs this dark gradient behind it to stay legible.
+     Content is cleared with padding, not margin. */
   background: linear-gradient(160deg, #0d2018 0%, var(--forest) 50%, #1a3020 100%);
-  padding: 5rem 3rem 4rem; position: relative; overflow: hidden;
+  padding: calc(var(--nav-h) + 3rem) 3rem 4rem;
+  position: relative; overflow: hidden;
 }
 .blog-hero::before {
   content: ''; position: absolute; inset: 0;
   background: radial-gradient(ellipse 70% 80% at 70% 50%, rgba(74,124,89,.2), transparent);
 }
 .blog-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; }
+.blog-hero-meta {
+  display: flex; align-items: center; gap: 1rem;
+  flex-wrap: wrap; margin-bottom: .9rem;
+}
 .blog-eyebrow { font-family: var(--ff-mono); font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--fern); margin-bottom: .7rem; }
+.blog-hero-meta .blog-eyebrow { margin-bottom: 0; }
+.blog-badge {
+  font-family: var(--ff-mono); font-size: .62rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(200,169,110,.1);
+  border: 1px solid rgba(200,169,110,.35);
+  padding: .24rem .75rem; border-radius: 999px;
+  white-space: nowrap;
+}
+.blog-badge[hidden] { display: none; }
 .blog-hero h1 { font-family: var(--ff-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; color: var(--white); line-height: 1.0; margin-bottom: 1rem; }
 .blog-hero h1 em { font-style: italic; color: var(--gold); }
 .blog-hero p { font-size: 1.1rem; font-weight: 300; color: rgba(255,255,255,.6); max-width: 520px; line-height: 1.7; }
 
 .filters-bar {
   background: var(--white); border-bottom: 1px solid var(--sage);
-  padding: 1rem 3rem; position: sticky; top: 64px; z-index: 50;
+  padding: 1rem 3rem; position: sticky; top: var(--nav-h); z-index: 50;
 }
 .filters-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
 .filter-btn {
@@ -738,6 +753,9 @@ footer {
 .article-body blockquote { border-left: 3px solid var(--gold); padding-left: 1.2rem; font-style: italic; color: #555; margin: 1.5rem 0; font-size: 1.15rem; }
 .article-body ul { padding-left: 1.5rem; margin-bottom: 1.3rem; }
 .article-body ul li { margin-bottom: .5rem; }
+.article-body img { display: block; max-width: 100%; height: auto; border-radius: 3px; margin: 1.5rem 0; }
+.article-body a { color: var(--moss); text-decoration: underline; text-underline-offset: 2px; }
+.article-body a:hover { color: var(--forest); }
 .article-cta { background: var(--mist); border-radius: 4px; padding: 1.5rem; margin-top: 2rem; text-align: center; }
 .article-cta p { font-size: 1rem; color: var(--forest); margin-bottom: 1rem; font-weight: 400; }
 .article-cta button { background: var(--forest); color: var(--white); font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; padding: .8rem 2rem; border-radius: 2px; border: none; cursor: pointer; transition: background .2s; }
@@ -763,6 +781,6 @@ footer {
   .featured-post { grid-template-columns: 1fr; }
   .featured-img { aspect-ratio: 16/9; }
   .filters-bar { padding: .8rem 1.5rem; }
-  .blog-hero { padding: 3.5rem 1.5rem 2.5rem; }
+  .blog-hero { padding: calc(var(--nav-h) + 1.75rem) 1.5rem 2.5rem; }
   .article-content { padding: 1.5rem 1.5rem 2rem; }
 }

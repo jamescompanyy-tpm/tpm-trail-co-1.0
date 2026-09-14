@@ -432,11 +432,12 @@
 ═══════════════════════════════════════════════════ -->
 <div id="blogPage" style="display:none;">
 
-  <div class="cms-banner">🌲 Trail Journal — New stories added regularly</div>
-
   <div class="blog-hero">
     <div class="blog-hero-inner">
-      <p class="blog-eyebrow">TPM Trail Co. · New England</p>
+      <div class="blog-hero-meta">
+        <p class="blog-eyebrow">TPM Trail Co. · New England</p>
+        <span class="blog-badge" id="blogBadge" hidden></span>
+      </div>
       <h1>The Trail<br><em>Journal</em></h1>
       <p>Trip reports, trail history, ecology deep-dives, and gear guides from New England's backcountry — written by James Rivera.</p>
     </div>
@@ -524,18 +525,5 @@
 
 <script src="js/main.js" defer></script>
 <script src="js/blog.js" defer></script>
-
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on('init', user => {
-      if (!user) {
-        window.netlifyIdentity.on('login', () => {
-          document.location.href = '/admin/';
-        });
-      }
-    });
-  }
-</script>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
 </body>
 </html>

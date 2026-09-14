@@ -18,6 +18,9 @@ function markdownToHtml(md) {
     .replace(/^# (.+)$/gm,   '<h1>$1</h1>')
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    // images before links — image syntax contains link syntax
+    .replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, '<img src="$2" alt="$1" loading="lazy">')
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>')
     .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
     .replace(/^\- (.+)$/gm, '<li>$1</li>')
     .replace(/(<li>[\s\S]+?<\/li>)(\n(?!<li>)|$)/g, '<ul>$1</ul>')
@@ -33,17 +36,65 @@ function markdownToHtml(md) {
 }
 
 // ── parse YAML frontmatter ──
+// Handles the subset of YAML a CMS actually emits: quoted scalars (so values
+// may contain ":" or "#"), block sequences, inline arrays, and folded/literal
+// block scalars. Values stay strings — no type coercion — except sequences,
+// which come back as arrays.
+function unquote(value) {
+  const v = value.trim();
+  if (v.length > 1 && ((v[0] === '"' && v.endsWith('"')) || (v[0] === "'" && v.endsWith("'")))) {
+    const q = v[0];
+    const inner = v.slice(1, -1);
+    return q === '"'
+      ? inner.replace(/\\"/g, '"').replace(/\\\\/g, '\\')
+      : inner.replace(/''/g, "'");
+  }
+  return v;
+}
+
 function parseFrontmatter(raw) {
-  const match = raw.match(/^---\n([\s\S]+?)\n---\n?([\s\S]*)$/);
+  const match = raw.match(/^---\r?\n([\s\S]+?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!match) return { data: {}, content: raw };
-  const data = {};
-  match[1].split('\n').forEach(line => {
+
+  const lines = match[1].split(/\r?\n/);
+  const data  = {};
+  let key = null;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (!line.trim() || /^\s*#/.test(line)) continue;
+
+    // "- item" belonging to the key above it
+    const item = line.match(/^\s*-\s+(.*)$/);
+    if (item && key) {
+      if (!Array.isArray(data[key])) data[key] = [];
+      data[key].push(unquote(item[1]));
+      continue;
+    }
+
     const idx = line.indexOf(':');
-    if (idx === -1) return;
-    const key   = line.slice(0, idx).trim();
-    const value = line.slice(idx + 1).trim().replace(/^["']|["']$/g, '');
-    data[key] = value;
-  });
+    if (idx === -1) continue;
+    key = line.slice(0, idx).trim();
+    const rest = line.slice(idx + 1).trim();
+
+    // folded (>) or literal (|) block scalar — consume the indented lines below
+    if (/^[>|][-+]?$/.test(rest)) {
+      const folded = rest[0] === '>';
+      const buf = [];
+      while (i + 1 < lines.length && (!lines[i + 1].trim() || /^\s{2,}\S/.test(lines[i + 1]))) {
+        buf.push(lines[++i].trim());
+      }
+      data[key] = (folded ? buf.join(' ') : buf.join('\n')).trim();
+      continue;
+    }
+
+    if (rest.startsWith('[') && rest.endsWith(']')) {
+      data[key] = rest.slice(1, -1).split(',').map(unquote).filter(Boolean);
+    } else {
+      data[key] = unquote(rest);   // "" here may become an array via "- " lines
+    }
+  }
+
   return { data, content: match[2] || '' };
 }
 
@@ -109,14 +160,16 @@ exports.handler = async function (event) {
         const { data, content: body } = parseFrontmatter(content);
         return {
           id:       index + 1000,
-          featured: data.featured === 'true',
+          featured: data.featured === true || data.featured === 'true',
           title:    data.title    || 'Untitled',
           category: data.category || 'Trail Stories',
           date:     data.date     || '',
           readTime: data.readTime || '5 min read',
           author:   data.author   || 'James Rivera',
           excerpt:  data.excerpt  || '',
-          tags:     data.tags ? data.tags.split(',').map(t => t.trim()) : [],
+          tags:     Array.isArray(data.tags)
+                      ? data.tags
+                      : (data.tags ? String(data.tags).split(',').map(t => t.trim()).filter(Boolean) : []),
           gradient: data.gradient || 'linear-gradient(135deg, #1c3a28 0%, #2d5a3d 40%, #4a7c59 100%)',
           body:     markdownToHtml(body),
           slug:     file.name.replace('.md', ''),

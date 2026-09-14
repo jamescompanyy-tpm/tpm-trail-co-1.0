@@ -1,0 +1,100 @@
+# ═══════════════════════════════════════════════════
+#  TPM Trail Co. — CMS configuration
+#  Field names below MUST match the frontmatter keys that
+#  netlify/functions/get-posts.js reads. Renaming one here
+#  without updating that function will drop it from the site.
+# ═══════════════════════════════════════════════════
+
+backend:
+  name: github
+  # ── CHANGE THIS to your GitHub repo, e.g. rj4w3/tpm-trail-co ──
+  repo: jamescompanyy-tpm/tpm-trail-co
+  branch: main
+
+# Where images dragged into the editor get committed
+media_folder: "images/posts"
+public_folder: "/images/posts"
+
+collections:
+  - name: "posts"
+    label: "Trail Journal"
+    label_singular: "Post"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}}  ·  {{date}}"
+    sortable_fields: ["date", "title", "category"]
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "Publish date"
+        name: "date"
+        widget: "datetime"
+        format: "MMMM D, YYYY"        # written to the file — matches existing posts
+        date_format: "MMMM D, YYYY"   # shown in the picker
+        time_format: false
+        hint: "Shown on the post card exactly as formatted here."
+
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        default: "Trail Stories"
+        options:
+          - "Trail Stories"
+          - "Ecology"
+          - "Gear"
+        hint: "Drives the Journal filter buttons. These three values only."
+
+      - label: "Feature this post"
+        name: "featured"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "The featured post gets the large card at the top. Only turn this on for one post."
+
+      - label: "Read time"
+        name: "readTime"
+        widget: "string"
+        default: "5 min read"
+
+      - label: "Author"
+        name: "author"
+        widget: "string"
+        default: "James Rivera"
+
+      - label: "Excerpt"
+        name: "excerpt"
+        widget: "text"
+        hint: "The teaser shown on the post card. Two or three sentences."
+
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "Press Enter after each tag."
+
+      - label: "Card artwork"
+        name: "gradient"
+        widget: "select"
+        default: "linear-gradient(135deg, #1c3a28 0%, #2d5a3d 40%, #4a7c59 100%)"
+        hint: "Posts use a colour gradient instead of a photo on the card."
+        options:
+          - label: "Deep forest (green)"
+            value: "linear-gradient(135deg, #1c3a28 0%, #2d5a3d 40%, #4a7c59 100%)"
+          - label: "Meadow (light green)"
+            value: "linear-gradient(135deg, #2d5a3d 0%, #4a7c59 60%, #7aaa85 100%)"
+          - label: "Earth (brown / clay)"
+            value: "linear-gradient(135deg, #3d2b1f 0%, #6b4c35 50%, #c4956a 100%)"
+          - label: "Pre-dawn (near black)"
+            value: "linear-gradient(135deg, #0d2018 0%, #1c3a28 40%, #4a7c59 100%)"
+          - label: "Sage (pale green)"
+            value: "linear-gradient(135deg, #4a7c59 0%, #7aaa85 50%, #b5cdb8 100%)"
+          - label: "Sand (warm tan)"
+            value: "linear-gradient(135deg, #6b4c35 0%, #c4956a 60%, #e8d5b7 100%)"
+
+      - label: "Post"
+        name: "body"
+        widget: "markdown"
+        hint: "Supports headings, bold, italic, quotes, bullet lists, links and images."
