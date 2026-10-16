@@ -99,3 +99,79 @@ collections:
         name: "body"
         widget: "markdown"
         hint: "Supports headings, bold, italic, quotes, bullet lists, links and images."
+
+  # ── 2027 Trips ──────────────────────────────────────
+  # Edits one JSON file. The /trips page reads the same file, so saving here
+  # commits to the repo and the page updates on the next deploy.
+  # Every field is optional — anything left blank shows as "TBA" on the page.
+  - name: "trips2027"
+    label: "2027 Trips"
+    files:
+      - name: "trips"
+        label: "2027 Trip List"
+        file: "data/trips-2027.json"
+        description: "Add, edit, reorder or delete the trips shown on /trips."
+        fields:
+          - label: "Trips"
+            label_singular: "Trip"
+            name: "trips"
+            widget: "list"
+            required: false
+            summary: "{{fields.name}} — {{fields.state}} · {{fields.status}}"
+            fields:
+              - label: "Trip name"
+                name: "name"
+                widget: "string"
+                required: false
+
+              - label: "Type"
+                name: "type"
+                widget: "select"
+                required: false
+                options: ["day hike", "overnight"]
+                hint: "Drives the filter buttons on the page."
+
+              - label: "State"
+                name: "state"
+                widget: "select"
+                required: false
+                options: ["CT", "MA", "NH", "VT"]
+
+              - label: "Dates"
+                name: "dates"
+                widget: "list"
+                required: false
+                hint: "One entry per date or date range. Press Enter after each."
+
+              - label: "Difficulty"
+                name: "difficulty"
+                widget: "string"
+                required: false
+
+              - label: "Distance"
+                name: "distance"
+                widget: "string"
+                required: false
+
+              - label: "Elevation gain"
+                name: "elevationGain"
+                widget: "string"
+                required: false
+
+              - label: "Max group size"
+                name: "maxGroupSize"
+                widget: "string"
+                required: false
+
+              - label: "Price per person"
+                name: "price"
+                widget: "string"
+                required: false
+
+              - label: "Status"
+                name: "status"
+                widget: "select"
+                required: false
+                default: "open"
+                options: ["open", "waitlist", "full"]
+                hint: "open = bookable · waitlist = request goes on the waitlist · full = shown but not selectable."

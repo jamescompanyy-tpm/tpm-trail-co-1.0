@@ -60,7 +60,9 @@ function scrollToId(id) {
 }
 
 // ── booking form ──
-document.getElementById('bookingForm').addEventListener('submit', async e => {
+// Guarded: main.js is also loaded by trips.html, which has no booking form.
+const bookingForm = document.getElementById('bookingForm');
+if (bookingForm) bookingForm.addEventListener('submit', async e => {
   e.preventDefault();
   const form = e.target;
   const btn  = form.querySelector('.form-submit');
@@ -87,7 +89,8 @@ document.getElementById('bookingForm').addEventListener('submit', async e => {
 });
 
 // ── contact form ──
-document.getElementById('contactForm').addEventListener('submit', e => {
+const contactForm = document.getElementById('contactForm');
+if (contactForm) contactForm.addEventListener('submit', e => {
   e.preventDefault();
   showToast('✉️ Message sent! We\'ll get back to you shortly.');
   e.target.reset();
@@ -127,6 +130,9 @@ function showPage(page) {
   const mainEls    = MAIN_SECTIONS.map(id => document.getElementById(id)).filter(Boolean);
   const mainFooter = document.querySelector('footer');
 
+  // Pages other than index.html have no blog panel — nothing to switch.
+  if (!blogPage) return;
+
   if (page === 'blog') {
     mainEls.forEach(el => el.style.display = 'none');
     if (mainFooter) mainFooter.style.display = 'none';
@@ -158,6 +164,14 @@ function showPage(page) {
     window.scrollTo(0, 0);
   }
 }
+
+// ── deep link ──
+// The Journal is a JS-swapped panel, not a URL, so links from other pages
+// (e.g. /trips) point at /?page=blog and we open it on arrival. Runs on
+// DOMContentLoaded so blog.js has finished defining loadCMSPosts().
+window.addEventListener('DOMContentLoaded', () => {
+  if (new URLSearchParams(location.search).get('page') === 'blog') showPage('blog');
+});
 
 // ── service prefill ──
 function prefillService(value) {

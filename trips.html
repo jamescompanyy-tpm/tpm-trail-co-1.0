@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2027 Guided Trips — TPM Trail Co.</title>
+
+<!-- SEO: core -->
+<meta name="description" content="Browse TPM Trail Co.'s 2027 season of guided day hikes and overnight backpacking trips across Connecticut, Massachusetts, New Hampshire and Vermont. Request a spot — no payment required.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tpmtrailco.com/trips">
+
+<!-- SEO: Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tpmtrailco.com/trips">
+<meta property="og:title" content="2027 Guided Trips — TPM Trail Co.">
+<meta property="og:description" content="Guided day hikes and overnight backpacking trips across New England for the 2027 season. Small groups, every experience level welcome.">
+<meta property="og:site_name" content="TPM Trail Co.">
+<meta property="og:image" content="https://tpmtrailco.com/images/james.jpg">
+
+<!-- SEO: Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="2027 Guided Trips — TPM Trail Co.">
+<meta name="twitter:description" content="Guided day hikes and overnight backpacking trips across New England for the 2027 season.">
+<meta name="twitter:image" content="https://tpmtrailco.com/images/james.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- custom cursor -->
+<div class="cursor" id="cursor">
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+</div>
+
+<!-- nav — plain hrefs, since this is a standalone page -->
+<nav id="navbar">
+  <a href="/" class="nav-logo">TPM <span>Trail Co.</span></a>
+  <ul class="nav-links">
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/trips" class="active" aria-current="page">Trips</a></li>
+    <li><a href="/?page=blog">Journal</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a class="nav-book" href="/#booking">Book a hike</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- mobile nav drawer -->
+<div class="nav-drawer" id="navDrawer" aria-hidden="true">
+  <a href="/">Home</a>
+  <a href="/#services">Services</a>
+  <a href="/#about">About</a>
+  <a href="/trips" aria-current="page">Trips</a>
+  <a href="/?page=blog">Journal</a>
+  <a href="/#contact">Contact</a>
+  <a class="drawer-book" href="/#booking">Book a hike</a>
+</div>
+
+<!-- hero -->
+<header class="blog-hero">
+  <div class="blog-hero-inner">
+    <div class="blog-hero-meta">
+      <p class="blog-eyebrow">TPM Trail Co. · 2027 Season</p>
+      <span class="blog-badge" id="tripCount" hidden></span>
+    </div>
+    <h1>The 2027<br><em>Trips</em></h1>
+    <p>Guided day hikes and overnight backpacking across Connecticut, Massachusetts, New Hampshire and Vermont. Small groups, every experience level welcome.</p>
+  </div>
+</header>
+
+<!-- filters -->
+<div class="filters-bar" id="tripFilters" hidden>
+  <div class="filters-inner">
+    <button class="filter-btn active" type="button" onclick="filterTrips('all', this)">All trips</button>
+    <button class="filter-btn" type="button" onclick="filterTrips('day hike', this)">🥾 Day hikes</button>
+    <button class="filter-btn" type="button" onclick="filterTrips('overnight', this)">🏕️ Overnight</button>
+  </div>
+</div>
+
+<!-- trips -->
+<section id="trips">
+  <div class="container">
+
+    <div class="trips-grid" id="tripsGrid"></div>
+
+    <div class="empty-state" id="tripsEmpty" hidden>
+      <p>2027 trips coming soon.</p>
+      <p class="empty-sub">The schedule is still being put together. Leave your details below and you'll be the first to hear when dates go up.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- request form -->
+<section id="request">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Request a spot</p>
+      <h2 class="section-title">Come walk<br><em>with us</em></h2>
+    </div>
+
+    <div class="request-layout">
+      <div class="request-info reveal">
+        <p id="formIntro">Tell me which trips interest you and I'll follow up by email to confirm availability and send the waiver and intake paperwork.</p>
+        <ul class="booking-perks">
+          <li>No payment now — this is a request, not a booking</li>
+          <li>All experience levels welcome, beginners included</li>
+          <li>I reply personally, usually within 24 hours</li>
+          <li>Waiver and intake forms come by email once confirmed</li>
+        </ul>
+      </div>
+
+      <div class="booking-form reveal">
+        <div class="form-title">Trip Request</div>
+        <form id="tripForm" novalidate>
+          <input type="hidden" name="_subject" value="2027 Trip Request — TPM Trail Co.">
+          <!-- honeypot: real people never fill this in -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="t-first">First name <span class="req">*</span></label>
+              <input type="text" id="t-first" name="first_name" placeholder="First name" autocomplete="given-name" required>
+            </div>
+            <div class="form-group">
+              <label for="t-last">Last name <span class="req">*</span></label>
+              <input type="text" id="t-last" name="last_name" placeholder="Last name" autocomplete="family-name" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="t-email">Email address <span class="req">*</span></label>
+            <input type="email" id="t-email" name="email" placeholder="you@email.com" autocomplete="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="t-phone">Phone number <span class="optional">(optional)</span></label>
+            <input type="tel" id="t-phone" name="phone" placeholder="(860) 555-0100" autocomplete="tel">
+          </div>
+
+          <!-- shown once trips are published -->
+          <div class="form-group" id="tripPickerBlock" hidden>
+            <fieldset class="trip-fieldset">
+              <legend>Which trips interest you?</legend>
+              <div class="trip-choice-list" id="tripChoices"></div>
+            </fieldset>
+          </div>
+
+          <!-- shown while the schedule is still empty -->
+          <div class="form-group" id="interestBlock" hidden>
+            <label for="t-interest">What are you interested in?</label>
+            <select id="t-interest" name="interest">
+              <option value="">Select one…</option>
+              <option>Day hikes</option>
+              <option>Overnight backpacking</option>
+              <option>Either — tell me what's available</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="t-dates">Preferred date(s)</label>
+            <input type="text" id="t-dates" name="preferred_dates" placeholder="e.g. Any weekend in September">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="t-party">Number in your party</label>
+              <select id="t-party" name="party_size">
+                <option value="">Select…</option>
+                <option>Just me</option>
+                <option>2 people</option>
+                <option>3–4 people</option>
+                <option>5–6 people</option>
+                <option>7–8 people</option>
+                <option>9+ people</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="t-exp">Experience level</label>
+              <select id="t-exp" name="experience">
+                <option value="">Select…</option>
+                <option>New to hiking</option>
+                <option>Some day hikes</option>
+                <option>Comfortable on most trails</option>
+                <option>Experienced backpacker</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="t-msg">Questions, or anything I should know?</label>
+            <textarea id="t-msg" name="message" placeholder="Injuries, dietary needs, nerves about a first hike — all useful to know."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Send request →</button>
+          <p class="form-note">No payment required now — James will confirm availability first.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div>
+    <div class="footer-logo">TPM <span>Trail Co.</span></div>
+    <div class="footer-tagline">The People's Medicine</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/trips">2027 Trips</a></li>
+    <li><a href="/?page=blog">Journal</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 TPM Trail Co. · All rights reserved</div>
+</footer>
+
+<!-- toast -->
+<div class="toast" id="toast"></div>
+
+<script src="js/main.js" defer></script>
+<script src="js/trips.js" defer></script>
+</body>
+</html>
