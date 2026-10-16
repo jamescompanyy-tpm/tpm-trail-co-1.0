@@ -7,8 +7,9 @@
 
 backend:
   name: github
-  # ── CHANGE THIS to your GitHub repo, e.g. rj4w3/tpm-trail-co ──
-  repo: jamescompanyy-tpm/tpm-trail-co
+  # Must match the repo Netlify deploys this site from, and the GITHUB_REPO
+  # env var that netlify/functions/get-posts.js reads. All three must agree.
+  repo: jamescompanyy-tpm/tpm-trail-co-1.0
   branch: main
 
 # Where images dragged into the editor get committed
