@@ -123,8 +123,15 @@ document.addEventListener('keydown', e => {
 
 // ── page switcher ──
 const MAIN_SECTIONS = ['hero', 'mission', 'services', 'booking', 'about', 'founding', 'contact'];
+const JOURNAL_PATH  = '/journal';
 
-function showPage(page) {
+function isJournalUrl() {
+  return location.pathname.replace(/\/+$/, '').toLowerCase() === JOURNAL_PATH;
+}
+
+// nav: 'push' adds a history entry, 'replace' rewrites the current one,
+// 'none' leaves the URL alone — used when the back button drove the change.
+function showPage(page, nav = 'push') {
   const blogPage   = document.getElementById('blogPage');
   const navJournal = document.getElementById('navJournal');
   const mainEls    = MAIN_SECTIONS.map(id => document.getElementById(id)).filter(Boolean);
@@ -163,14 +170,31 @@ function showPage(page) {
     if (navJournal) navJournal.classList.remove('active');
     window.scrollTo(0, 0);
   }
+
+  syncUrl(page, nav);
 }
 
-// ── deep link ──
-// The Journal is a JS-swapped panel, not a URL, so links from other pages
-// (e.g. /trips) point at /?page=blog and we open it on arrival. Runs on
-// DOMContentLoaded so blog.js has finished defining loadCMSPosts().
+// Keeps the address bar in step with the panel on show: /journal or /.
+function syncUrl(page, nav) {
+  if (nav === 'none') return;
+  const url  = page === 'blog' ? JOURNAL_PATH : '/';
+  const here = location.pathname + location.search;
+  if (nav === 'replace')   history.replaceState({ page }, '', url);
+  else if (here !== url)   history.pushState({ page }, '', url);
+}
+
+// ── deep link & back button ──
+// The Journal is a panel inside this page, not its own file, so /journal is
+// served by the /* → /index.html rewrite in netlify.toml and opened here.
+// /?page=blog still works for older links and is rewritten to /journal on
+// arrival. Runs on DOMContentLoaded so blog.js has defined loadCMSPosts().
 window.addEventListener('DOMContentLoaded', () => {
-  if (new URLSearchParams(location.search).get('page') === 'blog') showPage('blog');
+  const legacyLink = new URLSearchParams(location.search).get('page') === 'blog';
+  if (isJournalUrl() || legacyLink) showPage('blog', 'replace');
+});
+
+window.addEventListener('popstate', () => {
+  showPage(isJournalUrl() ? 'blog' : 'main', 'none');
 });
 
 // ── service prefill ──

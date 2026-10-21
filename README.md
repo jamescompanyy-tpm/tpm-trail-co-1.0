@@ -4,7 +4,8 @@ Static site, no build step. Netlify deploys this repo (`main`) straight to
 production. Pushing to `main` redeploys automatically.
 
 ```
-index.html              home (sections are JS-swapped with the Journal)
+index.html              home, and /journal (the Journal is a JS-swapped panel
+                        on this page, kept at /journal via the History API)
 trips.html              /trips — 2027 season trips + request form
 css/styles.css          all styles, design tokens at the top
 js/main.js              cursor, nav, scroll reveal, toast, forms, page switch
@@ -38,17 +39,24 @@ Changes appear on the live site about a minute later — not instantly.
 | Field | Notes |
 |---|---|
 | Trip name | Shown as the card heading |
-| Type | `day hike` or `overnight` — drives the filter buttons |
+| Experience type | Guided Hike — Half Day, Guided Hike — Full Day, Overnight Backpacking or Team Retreat. Drives the filter buttons |
+| Location | Trail or area |
 | State | CT, MA, NH or VT |
 | Dates | One entry per date or range. Press Enter after each |
+| Duration | Free text, e.g. `Half day`, `2 nights` |
 | Difficulty / Distance / Elevation gain | Free text, write it however you like |
-| Max group size | Free text |
-| Price per person | Free text, e.g. `$145` |
+| Group size | Free text |
+| Price per person | Flat price for this trip, e.g. `145`. Shown as `$145 / person` |
+| Spots remaining | Optional. Blank hides the row instead of showing "TBA" |
+| Trip detail or itinerary link | Optional. Adds a link on the card |
 | Status | `open`, `waitlist` or `full` |
+
+Prices live on the trip, not on the homepage — the homepage cards describe each
+experience and link here.
 
 **Status controls the button on each card:**
 
-- `open` → "Request this trip"
+- `open` → "Request a spot"
 - `waitlist` → "Join waitlist", and the request is labelled as a waitlist request
 - `full` → no button, and the trip can't be selected in the form
 
@@ -59,7 +67,7 @@ icon to delete, or click into any field to edit. Hit **Publish** when done.
 
 ### While the trip list is empty
 
-The page shows "2027 trips coming soon" and the form becomes a general interest
+The page shows "The 2027 trip lineup is being planned" and the form becomes a general interest
 sign-up, so you still collect leads. It switches over automatically as soon as
 one trip exists — nothing to toggle.
 
@@ -96,7 +104,8 @@ which browsers block on the file protocol.
 powershell -NoProfile -File serve.ps1 -Port 3333
 ```
 
-Then open `http://localhost:3333/trips.html`.
+Then open `http://localhost:3333/`. The server mirrors Netlify's URL handling,
+so `/trips` and `/journal` work locally the way they do in production.
 
 Two things don't work locally:
 

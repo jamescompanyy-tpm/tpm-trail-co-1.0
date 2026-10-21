@@ -11,6 +11,14 @@ while ($listener.IsListening) {
   $path = $req.Url.LocalPath
   if ($path -eq '/') { $path = '/index.html' }
   $file = Join-Path $base $path.TrimStart('/')
+  # Mirror Netlify: an extensionless path tries <path>.html (so /trips serves
+  # trips.html), then falls back to index.html for the /* rewrite (/journal).
+  # Functions are left to 404 here — there's no Netlify runtime locally.
+  if (-not (Test-Path $file -PathType Leaf) -and -not [System.IO.Path]::GetExtension($file) -and
+      -not $path.StartsWith('/.netlify/')) {
+    if (Test-Path "$file.html" -PathType Leaf) { $file = "$file.html" }
+    else { $file = Join-Path $base 'index.html' }
+  }
   if (Test-Path $file -PathType Leaf) {
     $ext = [System.IO.Path]::GetExtension($file)
     $mime = switch ($ext) {

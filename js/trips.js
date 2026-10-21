@@ -7,6 +7,15 @@
 
 const TRIPS_ENDPOINT = 'https://formspree.io/f/maqvnqqd';
 
+// Each experience type belongs to one filter group. The homepage cards link
+// here with ?type=<group>, so these keys must match the hrefs in index.html.
+const TYPE_GROUPS = {
+  'guided hike — half day': 'guided-hike',
+  'guided hike — full day': 'guided-hike',
+  'overnight backpacking':  'overnight',
+  'team retreat':           'corporate'
+};
+
 let ALL_TRIPS   = [];
 let tripFilter  = 'all';
 
@@ -21,9 +30,19 @@ async function loadTrips() {
     console.info('Trip data not loaded:', e.message);
     ALL_TRIPS = [];
   }
+  applyFilterFromUrl();
   renderTrips();
   renderTripChoices();
   syncFormMode();
+}
+
+// ── /trips?type=guided-hike etc. — arriving from a homepage card ──
+function applyFilterFromUrl() {
+  const want = (new URLSearchParams(location.search).get('type') || '').toLowerCase();
+  if (!['guided-hike', 'overnight', 'corporate'].includes(want)) return;
+  tripFilter = want;
+  document.querySelectorAll('#tripFilters .filter-btn')
+    .forEach(b => b.classList.toggle('active', b.dataset.filter === want));
 }
 
 // ── helpers ──
@@ -41,6 +60,15 @@ function cell(v) {
     : `<span class="trip-spec-value">${esc(s)}</span>`;
 }
 
+// Flat per-person price, shown as "$145 / person" whether or not the CMS
+// value was typed with the dollar sign.
+function priceCell(v) {
+  const s = val(v);
+  if (s === null) return '<span class="trip-spec-value is-tba">TBA</span>';
+  const amount = s.startsWith('$') ? s : '$' + s;
+  return `<span class="trip-spec-value">${esc(amount)} / person</span>`;
+}
+
 function esc(s) {
   return String(s).replace(/[&<>"']/g, c =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -53,6 +81,10 @@ function statusOf(trip) {
 
 function tripId(trip, i) {
   return val(trip.name) ? `${val(trip.name)}` : `Trip ${i + 1}`;
+}
+
+function groupOf(trip) {
+  return TYPE_GROUPS[(val(trip.type) || '').toLowerCase()] || '';
 }
 
 // ── render cards ──
@@ -77,10 +109,10 @@ function renderTrips() {
 
   const shown = tripFilter === 'all'
     ? ALL_TRIPS
-    : ALL_TRIPS.filter(t => (val(t.type) || '').toLowerCase() === tripFilter);
+    : ALL_TRIPS.filter(t => groupOf(t) === tripFilter);
 
   if (shown.length === 0) {
-    grid.innerHTML = '<div class="empty-state"><p>No trips of this kind yet — try the other filter.</p></div>';
+    grid.innerHTML = '<div class="empty-state"><p>No trips of this kind yet — try another filter.</p></div>';
     if (count) count.textContent = '0 trips';
     return;
   }
@@ -88,14 +120,15 @@ function renderTrips() {
   grid.innerHTML = shown.map((t, i) => {
     const status = statusOf(t);
     const name   = tripId(t, ALL_TRIPS.indexOf(t));
-    const type   = val(t.type);
-    const state  = val(t.state);
-    const tagline = [type, state].filter(Boolean).join(' · ');
+    const tagline = val(t.type);
+    const location = [val(t.location), val(t.state)].filter(Boolean).join(', ');
+    const spots = val(t.spotsRemaining);
+    const link  = val(t.link);
 
     const cta = status === 'full'
       ? '<div class="trip-full-note">This trip is full</div>'
       : `<button type="button" class="btn-primary trip-cta" data-trip="${esc(name)}">
-           ${status === 'waitlist' ? 'Join waitlist' : 'Request this trip'}
+           ${status === 'waitlist' ? 'Join waitlist →' : 'Request a spot →'}
          </button>`;
 
     return `
@@ -107,12 +140,16 @@ function renderTrips() {
         ${tagline ? `<p class="trip-tagline">${esc(tagline)}</p>` : ''}
         <ul class="trip-specs">
           <li><span class="trip-spec-label">Dates</span>${cell(t.dates)}</li>
+          <li><span class="trip-spec-label">Location</span>${cell(location)}</li>
+          <li><span class="trip-spec-label">Duration</span>${cell(t.duration)}</li>
           <li><span class="trip-spec-label">Difficulty</span>${cell(t.difficulty)}</li>
           <li><span class="trip-spec-label">Distance</span>${cell(t.distance)}</li>
           <li><span class="trip-spec-label">Elevation gain</span>${cell(t.elevationGain)}</li>
-          <li><span class="trip-spec-label">Max group</span>${cell(t.maxGroupSize)}</li>
-          <li><span class="trip-spec-label">Price / person</span>${cell(t.price)}</li>
+          <li><span class="trip-spec-label">Group size</span>${cell(t.maxGroupSize)}</li>
+          ${spots ? `<li><span class="trip-spec-label">Spots left</span>${cell(spots)}</li>` : ''}
+          <li><span class="trip-spec-label">Price</span>${priceCell(t.price)}</li>
         </ul>
+        ${link ? `<a class="trip-link" href="${esc(link)}">Trip details &amp; itinerary →</a>` : ''}
         ${cta}
       </article>`;
   }).join('');

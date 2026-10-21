@@ -823,6 +823,14 @@ footer {
 }
 .trip-spec-value { font-size: .95rem; font-weight: 300; color: #444; text-align: right; }
 .trip-spec-value.is-tba { color: var(--sage); font-style: italic; }
+.trip-link {
+  display: inline-block; align-self: flex-start; margin-bottom: 1.1rem;
+  font-family: var(--ff-mono); font-size: .68rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--moss); border-bottom: 1px solid var(--sage);
+  padding-bottom: 2px; transition: color .2s, border-color .2s;
+}
+.trip-link:hover { color: var(--forest); border-color: var(--forest); }
 .trip-cta { width: 100%; margin-top: auto; }
 .trip-full-note {
   margin-top: auto; text-align: center;

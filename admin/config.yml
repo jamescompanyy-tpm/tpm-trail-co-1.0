@@ -124,12 +124,22 @@ collections:
                 widget: "string"
                 required: false
 
-              - label: "Type"
+              - label: "Experience type"
                 name: "type"
                 widget: "select"
                 required: false
-                options: ["day hike", "overnight"]
-                hint: "Drives the filter buttons on the page."
+                options:
+                  - "Guided Hike — Half Day"
+                  - "Guided Hike — Full Day"
+                  - "Overnight Backpacking"
+                  - "Team Retreat"
+                hint: "Drives the filter buttons on the page. These four values only."
+
+              - label: "Location"
+                name: "location"
+                widget: "string"
+                required: false
+                hint: "Trail or area, e.g. Sleeping Giant State Park."
 
               - label: "State"
                 name: "state"
@@ -142,6 +152,12 @@ collections:
                 widget: "list"
                 required: false
                 hint: "One entry per date or date range. Press Enter after each."
+
+              - label: "Duration"
+                name: "duration"
+                widget: "string"
+                required: false
+                hint: "Free text, e.g. Half day, Full day, 2 nights."
 
               - label: "Difficulty"
                 name: "difficulty"
@@ -158,7 +174,7 @@ collections:
                 widget: "string"
                 required: false
 
-              - label: "Max group size"
+              - label: "Group size"
                 name: "maxGroupSize"
                 widget: "string"
                 required: false
@@ -167,6 +183,19 @@ collections:
                 name: "price"
                 widget: "string"
                 required: false
+                hint: "Flat per-person price for this trip, e.g. 145. Shown as \"$145 / person\"."
+
+              - label: "Spots remaining"
+                name: "spotsRemaining"
+                widget: "string"
+                required: false
+                hint: "Optional. Left blank, the row is hidden rather than showing TBA."
+
+              - label: "Trip detail or itinerary link"
+                name: "link"
+                widget: "string"
+                required: false
+                hint: "Optional. Adds a link on the card."
 
               - label: "Status"
                 name: "status"

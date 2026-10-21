@@ -6,7 +6,7 @@
 <title>2027 Guided Trips — TPM Trail Co.</title>
 
 <!-- SEO: core -->
-<meta name="description" content="Browse TPM Trail Co.'s 2027 season of guided day hikes and overnight backpacking trips across Connecticut, Massachusetts, New Hampshire and Vermont. Request a spot — no payment required.">
+<meta name="description" content="Browse TPM Trail Co.'s 2027 season of guided day hikes and overnight backpacking trips across Massachusetts and New Hampshire. Request a spot — no payment required.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://tpmtrailco.com/trips">
 
@@ -43,7 +43,7 @@
     <li><a href="/#services">Services</a></li>
     <li><a href="/#about">About</a></li>
     <li><a href="/trips" class="active" aria-current="page">Trips</a></li>
-    <li><a href="/?page=blog">Journal</a></li>
+    <li><a href="/journal">Journal</a></li>
     <li><a href="/#contact">Contact</a></li>
   </ul>
   <a class="nav-book" href="/#booking">Book a hike</a>
@@ -58,7 +58,7 @@
   <a href="/#services">Services</a>
   <a href="/#about">About</a>
   <a href="/trips" aria-current="page">Trips</a>
-  <a href="/?page=blog">Journal</a>
+  <a href="/journal">Journal</a>
   <a href="/#contact">Contact</a>
   <a class="drawer-book" href="/#booking">Book a hike</a>
 </div>
@@ -71,16 +71,17 @@
       <span class="blog-badge" id="tripCount" hidden></span>
     </div>
     <h1>The 2027<br><em>Trips</em></h1>
-    <p>Guided day hikes and overnight backpacking across Connecticut, Massachusetts, New Hampshire and Vermont. Small groups, every experience level welcome.</p>
+    <p>Guided day hikes and overnight backpacking across Massachusetts and New Hampshire. Small groups, every experience level welcome.</p>
   </div>
 </header>
 
 <!-- filters -->
 <div class="filters-bar" id="tripFilters" hidden>
   <div class="filters-inner">
-    <button class="filter-btn active" type="button" onclick="filterTrips('all', this)">All trips</button>
-    <button class="filter-btn" type="button" onclick="filterTrips('day hike', this)">🥾 Day hikes</button>
-    <button class="filter-btn" type="button" onclick="filterTrips('overnight', this)">🏕️ Overnight</button>
+    <button class="filter-btn active" type="button" data-filter="all" onclick="filterTrips('all', this)">All trips</button>
+    <button class="filter-btn" type="button" data-filter="guided-hike" onclick="filterTrips('guided-hike', this)">🥾 Guided hikes</button>
+    <button class="filter-btn" type="button" data-filter="overnight" onclick="filterTrips('overnight', this)">🏕️ Overnight</button>
+    <button class="filter-btn" type="button" data-filter="corporate" onclick="filterTrips('corporate', this)">🤝 Team retreats</button>
   </div>
 </div>
 
@@ -91,8 +92,8 @@
     <div class="trips-grid" id="tripsGrid"></div>
 
     <div class="empty-state" id="tripsEmpty" hidden>
-      <p>2027 trips coming soon.</p>
-      <p class="empty-sub">The schedule is still being put together. Leave your details below and you'll be the first to hear when dates go up.</p>
+      <p>The 2027 trip lineup is being planned.</p>
+      <p class="empty-sub">Request a spot below and I'll let you know when trips are posted.</p>
     </div>
 
   </div>
@@ -158,8 +159,10 @@
             <label for="t-interest">What are you interested in?</label>
             <select id="t-interest" name="interest">
               <option value="">Select one…</option>
-              <option>Day hikes</option>
-              <option>Overnight backpacking</option>
+              <option>Guided Hike (Half Day)</option>
+              <option>Guided Hike (Full Day)</option>
+              <option>Overnight Backpacking</option>
+              <option>Team Retreat</option>
               <option>Either — tell me what's available</option>
             </select>
           </div>
@@ -179,7 +182,6 @@
                 <option>3–4 people</option>
                 <option>5–6 people</option>
                 <option>7–8 people</option>
-                <option>9+ people</option>
               </select>
             </div>
             <div class="form-group">
@@ -217,7 +219,7 @@
     <li><a href="/#services">Services</a></li>
     <li><a href="/#about">About</a></li>
     <li><a href="/trips">2027 Trips</a></li>
-    <li><a href="/?page=blog">Journal</a></li>
+    <li><a href="/journal">Journal</a></li>
     <li><a href="/#contact">Contact</a></li>
   </ul>
   <div class="footer-copy">© 2026 TPM Trail Co. · All rights reserved</div>
