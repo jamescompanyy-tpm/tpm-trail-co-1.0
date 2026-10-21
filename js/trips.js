@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast('🌲 Request sent! James will follow up by email within 24 hours.');
         form.reset();
       } else {
-        showToast('⚠️ Something went wrong. Please try again or email james@tpmtrailco.com.');
+        showToast('⚠️ Something went wrong. Please try again or email james.companyy@gmail.com.');
       }
     } catch {
       showToast('⚠️ Could not connect. Please check your internet and try again.');
