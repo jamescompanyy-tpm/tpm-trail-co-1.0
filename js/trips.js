@@ -87,6 +87,12 @@ function groupOf(trip) {
   return TYPE_GROUPS[(val(trip.type) || '').toLowerCase()] || '';
 }
 
+// Overnight trips pack from the overnight list; everything else packs like a
+// day hike. The /gear page reads ?type= on arrival.
+function gearTypeFor(trip) {
+  return groupOf(trip) === 'overnight' ? 'overnight' : 'day';
+}
+
 // ── render cards ──
 function renderTrips() {
   const grid  = document.getElementById('tripsGrid');
@@ -150,6 +156,7 @@ function renderTrips() {
           <li><span class="trip-spec-label">Price</span>${priceCell(t.price)}</li>
         </ul>
         ${link ? `<a class="trip-link" href="${esc(link)}">Trip details &amp; itinerary →</a>` : ''}
+        <a class="trip-link trip-link--gear" href="/gear?type=${gearTypeFor(t)}">Gear list for this trip →</a>
         ${cta}
       </article>`;
   }).join('');

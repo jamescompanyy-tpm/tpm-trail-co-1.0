@@ -831,6 +831,7 @@ footer {
   padding-bottom: 2px; transition: color .2s, border-color .2s;
 }
 .trip-link:hover { color: var(--forest); border-color: var(--forest); }
+.trip-link + .trip-link { margin-top: -.6rem; }
 .trip-cta { width: 100%; margin-top: auto; }
 .trip-full-note {
   margin-top: auto; text-align: center;
@@ -883,6 +884,172 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   outline: 2px solid var(--gold); outline-offset: 2px;
 }
 
+/* ═══════════════════════════════════════════════════
+   GEAR LIST (/gear)
+   Reuses .blog-hero, .filters-bar, .filter-btn, .empty-state,
+   .request-layout, .booking-form, .form-group and .toast.
+   Everything below is specific to the packing list itself.
+═══════════════════════════════════════════════════ */
+
+#gear { background: var(--cream); padding: 4rem 3rem 5rem; }
+#summary { background: var(--white); padding: 5rem 3rem; }
+#rental { background: var(--cream); padding: 5rem 3rem 6rem; }
+
+/* the trip-type toggle reuses .filter-btn, sized up for thumbs on this page,
+   and the progress line needs to read as copy rather than fine print */
+#gearTypeBar .filter-btn { min-height: 44px; padding: .6rem 1.2rem; }
+#gearProgress { color: var(--pine); font-size: .72rem; }
+
+/* ── toolbar above the list ── */
+.gear-toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem;
+}
+.gear-toolbar-note {
+  font-size: 1rem; font-weight: 300; font-style: italic;
+  color: #666; max-width: 40ch;
+}
+.gear-toolbar-actions { display: flex; gap: .6rem; flex-wrap: wrap; }
+.gear-action {
+  min-height: 44px; padding: .7rem 1.3rem;
+  font-family: var(--ff-mono); font-size: .68rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  background: var(--white); color: var(--forest);
+  border: 1.5px solid var(--sage); border-radius: 2px;
+  cursor: pointer; transition: border-color .2s, color .2s, background .2s;
+}
+.gear-action:hover { border-color: var(--moss); color: var(--moss); background: var(--mist); }
+.gear-action--quiet { color: #6b6b6b; }
+
+/* ── the list itself ── */
+.gear-groups {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.5rem; align-items: start;
+}
+.gear-group {
+  background: var(--white); border-radius: 4px;
+  padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,.05);
+}
+.gear-group-title {
+  font-family: var(--ff-display); font-size: 1.1rem; font-weight: 700;
+  color: var(--forest); margin-bottom: .8rem;
+  border-bottom: 2px solid var(--mist); padding-bottom: .6rem;
+}
+
+/* one fieldset per item — the three choices are its radio group */
+.gear-item {
+  border: none; padding: .9rem 0;
+  border-bottom: 1px solid var(--mist);
+}
+.gear-group .gear-item:last-of-type { border-bottom: none; padding-bottom: .2rem; }
+.gear-item-head { display: block; width: 100%; padding: 0; }
+.gear-item-name {
+  display: block; font-size: 1.05rem; font-weight: 400;
+  color: var(--ink); line-height: 1.35; transition: color .2s;
+}
+.gear-item.is-sorted .gear-item-name { color: var(--pine); }
+.gear-item-note {
+  display: block; font-size: .85rem; font-weight: 300; font-style: italic;
+  color: #6f6f6f; margin-top: .15rem; line-height: 1.4;
+}
+
+/* ── the three-way choice ── */
+.gear-choices { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
+/* the radio stays in the accessibility tree and keeps keyboard support —
+   the label beside it is what you actually see and tap */
+.gear-radio {
+  position: absolute; width: 1px; height: 1px;
+  opacity: 0; pointer-events: none;
+}
+.gear-choice {
+  flex: 1 1 auto; min-height: 44px; min-width: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  text-align: center; padding: .5rem .85rem;
+  font-family: var(--ff-mono); font-size: .66rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: #555; background: var(--white);
+  border: 1.5px solid var(--sage); border-radius: 2px;
+  cursor: pointer; transition: background .15s, border-color .15s, color .15s;
+}
+.gear-choice:hover { border-color: var(--moss); color: var(--moss); }
+.gear-radio:focus-visible + .gear-choice { outline: 2px solid var(--gold); outline-offset: 2px; }
+.gear-radio:checked + .gear-choice--have {
+  background: var(--mist); border-color: var(--moss); color: var(--pine);
+}
+.gear-radio:checked + .gear-choice--buy {
+  background: rgba(212,129,58,.12); border-color: var(--amber); color: #8a4612;
+}
+.gear-radio:checked + .gear-choice--rent {
+  background: rgba(200,169,110,.2); border-color: var(--gold); color: #6a5116;
+}
+.gear-choice-price {
+  margin-left: .4rem; font-size: .6rem; letter-spacing: .06em; opacity: .8;
+}
+
+/* ── summary panel ── */
+.gear-summary {
+  background: var(--white); border-radius: 4px; padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05); margin-top: 3rem;
+}
+.gear-summary-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+.gear-summary-title {
+  font-family: var(--ff-display); font-size: 1.1rem; font-weight: 700;
+  color: var(--forest); margin-bottom: 1rem;
+  border-bottom: 2px solid var(--mist); padding-bottom: .6rem;
+}
+.gear-summary-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+.gear-summary-item {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  font-size: 1.02rem; font-weight: 300; color: var(--ink);
+  padding-bottom: .5rem; border-bottom: 1px solid var(--mist);
+}
+.gear-summary-item:last-child { border-bottom: none; padding-bottom: 0; }
+.gear-summary-price {
+  font-family: var(--ff-mono); font-size: .68rem;
+  color: var(--moss); flex-shrink: 0;
+}
+.gear-summary-empty { font-size: .95rem; font-style: italic; color: var(--sage); }
+/* print-only lines */
+.gear-print-head, .gear-print-note { display: none; }
+
+/* ── what the rental form is sending ── */
+.gear-rental-recap {
+  background: var(--mist); border-radius: 2px;
+  padding: .9rem 1rem; margin-bottom: 1.2rem;
+}
+.gear-recap-label {
+  font-family: var(--ff-mono); font-size: .66rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--bark); margin-bottom: .5rem;
+}
+.gear-recap-label--empty {
+  font-family: var(--ff-body); font-size: .92rem; font-style: italic;
+  letter-spacing: 0; text-transform: none; color: #5f6b60; margin: 0;
+}
+.gear-recap-list {
+  list-style: none; display: flex; flex-direction: column; gap: .3rem;
+  font-size: .98rem; font-weight: 300; color: var(--ink);
+}
+.gear-recap-list li { display: flex; align-items: baseline; gap: .5rem; }
+.gear-recap-list li::before {
+  content: '→'; color: var(--gold);
+  font-family: var(--ff-mono); font-size: .8rem;
+}
+
+@media (max-width: 768px) {
+  #gear { padding: 2.5rem 1.5rem 3.5rem; }
+  #summary { padding: 3rem 1.5rem; }
+  #rental { padding: 3rem 1.5rem 4rem; }
+  .gear-groups { grid-template-columns: 1fr; gap: 1.2rem; }
+  .gear-group { padding: 1.2rem; }
+  .gear-toolbar { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .gear-toolbar-actions { width: 100%; }
+  .gear-action { flex: 1 1 auto; }
+  .gear-choice { font-size: .62rem; letter-spacing: .06em; padding: .5rem .6rem; }
+  .gear-summary { padding: 1.5rem; margin-top: 2rem; }
+  .gear-summary-cols { grid-template-columns: 1fr; gap: 1.8rem; }
+}
+
 /* ── responsive ── */
 @media (max-width: 768px) {
   #trips { padding: 2.5rem 1.5rem 3.5rem; }
@@ -908,4 +1075,37 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   .filters-bar { padding: .8rem 1.5rem; }
   .blog-hero { padding: calc(var(--nav-h) + 1.75rem) 1.5rem 2.5rem; }
   .article-content { padding: 1.5rem 1.5rem 2rem; }
+}
+
+/* ── print: /gear prints the summary only ── */
+@media print {
+  nav, .nav-drawer, .nav-hamburger, .cursor, .toast, footer,
+  .blog-hero, .filters-bar, #gear, #rental { display: none !important; }
+
+  body { background: #fff; color: #000; }
+  /* reveal animations never run in a print context */
+  .reveal { opacity: 1 !important; transform: none !important; }
+
+  #summary { background: #fff; padding: 0; }
+  #summary .section-label, #summary .section-title { display: none; }
+
+  .gear-summary { box-shadow: none; padding: 0; margin: 0; }
+  .gear-summary-cols { display: block; }
+  .gear-summary-col { margin-bottom: 1.6rem; break-inside: avoid; }
+  .gear-summary-title { color: #000; border-bottom-color: #000; }
+  .gear-summary-item { color: #000; border-bottom-color: #ccc; break-inside: avoid; }
+  .gear-summary-price { color: #333; }
+  .gear-summary-empty { color: #555; }
+
+  .gear-print-head {
+    display: block; font-family: var(--ff-display);
+    font-size: 1.2rem; font-weight: 700; color: #000;
+    border-bottom: 2px solid #000; padding-bottom: .5rem; margin-bottom: 1.2rem;
+  }
+  .gear-print-note {
+    display: block; font-size: .8rem; font-style: italic;
+    color: #333; margin-top: 1.4rem;
+  }
+
+  @page { margin: 18mm; }
 }

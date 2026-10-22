@@ -204,3 +204,58 @@ collections:
                 default: "open"
                 options: ["open", "waitlist", "full"]
                 hint: "open = bookable · waitlist = request goes on the waitlist · full = shown but not selectable."
+
+  # ── Gear List ───────────────────────────────────────
+  # Edits one JSON file. The /gear page reads the same file, so saving here
+  # commits to the repo and the page updates on the next deploy.
+  - name: "gear"
+    label: "Gear List"
+    files:
+      - name: "gear"
+        label: "Gear List"
+        file: "data/gear.json"
+        description: "Add, edit, reorder or delete the items shown on /gear."
+        fields:
+          - label: "Gear items"
+            label_singular: "Item"
+            name: "items"
+            widget: "list"
+            required: false
+            summary: "{{fields.name}} — {{fields.category}} · {{fields.tripType}}"
+            fields:
+              - label: "Item name"
+                name: "name"
+                widget: "string"
+                hint: "Shown as the item on the list, e.g. Sleeping bag."
+
+              - label: "Note"
+                name: "note"
+                widget: "string"
+                required: false
+                hint: "Optional. Small print under the name, e.g. Rated for the expected overnight low."
+
+              - label: "Category"
+                name: "category"
+                widget: "string"
+                required: false
+                hint: "Items are grouped under this heading, e.g. Shelter & Sleep. Type an existing category exactly to add to that group. Left blank, the item lands under Other gear."
+
+              - label: "Trip type"
+                name: "tripType"
+                widget: "select"
+                default: "day"
+                options: ["day", "overnight"]
+                hint: "day = shown on both Day Hike and Overnight · overnight = shown on Overnight only. An overnight item in the Pack category replaces the day pack, so there is only ever one pack to choose."
+
+              - label: "Available to rent from TPM"
+                name: "rentable"
+                widget: "boolean"
+                default: false
+                required: false
+                hint: 'On = the "Rent from TPM" choice appears for this item, and it can be included in a rental request.'
+
+              - label: "Rental price"
+                name: "rentalPrice"
+                widget: "string"
+                required: false
+                hint: "Optional, and only used when the item is rentable. Left blank, the page shows TBA. Free text, e.g. $15 / trip."
