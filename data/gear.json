@@ -41,8 +41,8 @@
       "rentalPrice": ""
     },
     {
-      "name": "Trail map",
-      "note": "Your guide carries the primary route map",
+      "name": "Trail map app",
+      "note": "Your guide will show you how to install it if necessary ",
       "category": "Navigation",
       "tripType": "day",
       "rentable": false,
