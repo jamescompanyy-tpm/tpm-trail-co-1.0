@@ -7,11 +7,14 @@ production. Pushing to `main` redeploys automatically.
 index.html              home, and /journal (the Journal is a JS-swapped panel
                         on this page, kept at /journal via the History API)
 trips.html              /trips — 2027 season trips + request form
+gear.html               /gear — interactive packing list + rental request form
 css/styles.css          all styles, design tokens at the top
 js/main.js              cursor, nav, scroll reveal, toast, forms, page switch
 js/blog.js              Journal rendering + CMS fetch
 js/trips.js             trips rendering + request form
+js/gear.js              gear list, saved selections, rental request form
 data/trips-2027.json    trip data — edited through /admin
+data/gear.json          gear items — edited through /admin
 _posts/*.md             journal posts — edited through /admin
 admin/                  Decap CMS
 netlify/functions/      get-posts.js reads _posts from GitHub
@@ -23,7 +26,8 @@ netlify/functions/      get-posts.js reads _posts from GitHub
 
 Go to **https://tpmtrailco.com/admin** and click **Login with GitHub**.
 
-You'll see two collections in the sidebar: **Trail Journal** and **2027 Trips**.
+You'll see three collections in the sidebar: **Trail Journal**, **2027 Trips** and
+**Gear List**.
 
 Everything you save commits to this repo and triggers a Netlify redeploy.
 Changes appear on the live site about a minute later — not instantly.
@@ -70,6 +74,30 @@ icon to delete, or click into any field to edit. Hit **Publish** when done.
 The page shows "The 2027 trip lineup is being planned" and the form becomes a general interest
 sign-up, so you still collect leads. It switches over automatically as soon as
 one trip exists — nothing to toggle.
+
+### Edit the gear list
+
+**Gear List → Gear List.** One row per item on /gear.
+
+| Field | Notes |
+|---|---|
+| Item name | Shown as the item, e.g. `Sleeping bag` |
+| Note | Optional small print under the name |
+| Category | The heading it's grouped under. Type an existing category *exactly* to add to that group — a new spelling starts a new group. Blank lands it under "Other gear" |
+| Trip type | `day` shows on both Day Hike and Overnight · `overnight` shows on Overnight only |
+| Available to rent from TPM | On = the "Rent from TPM" choice appears, and the item can be included in a rental request |
+| Rental price | Optional. Blank shows as `TBA`. Free text, e.g. `$15 / trip` |
+
+Two things worth knowing:
+
+- An **overnight** item in the **Pack** category replaces the day pack, so an
+  overnight trip only ever offers one pack. That is the one category where
+  overnight items replace day items instead of adding to them.
+- Visitors' selections are saved in their own browser, not here. Renaming an
+  item loses whatever they had marked against the old name.
+
+Rental requests arrive by email with the selected items listed — they're
+requests, not bookings, and the page says a waiver is required before pickup.
 
 ### Write a journal post
 

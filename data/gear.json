@@ -1,0 +1,260 @@
+{
+  "items": [
+    {
+      "name": "Broken-in hiking shoes or boots",
+      "note": "",
+      "category": "Clothing & Footwear",
+      "tripType": "day",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Moisture-wicking socks",
+      "note": "No cotton",
+      "category": "Clothing & Footwear",
+      "tripType": "day",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Weather-appropriate layers",
+      "note": "Insulating layer + wind/rain shell",
+      "category": "Clothing & Footwear",
+      "tripType": "day",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Hat",
+      "note": "Sun or warmth, depending on season",
+      "category": "Clothing & Footwear",
+      "tripType": "day",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Sunglasses",
+      "note": "",
+      "category": "Clothing & Footwear",
+      "tripType": "day",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Trail map",
+      "note": "Your guide carries the primary route map",
+      "category": "Navigation",
+      "tripType": "day",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Phone",
+      "note": "Optional, for photos",
+      "category": "Navigation",
+      "tripType": "day",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Water, 2–3 liters",
+      "note": "",
+      "category": "Hydration & Food",
+      "tripType": "day",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Trail snacks",
+      "note": "",
+      "category": "Hydration & Food",
+      "tripType": "day",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Lunch",
+      "note": "Unless provided — confirm with your guide",
+      "category": "Hydration & Food",
+      "tripType": "day",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Personal medications",
+      "note": "",
+      "category": "Personal Safety & Comfort",
+      "tripType": "day",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Sunscreen",
+      "note": "",
+      "category": "Personal Safety & Comfort",
+      "tripType": "day",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Insect repellent",
+      "note": "",
+      "category": "Personal Safety & Comfort",
+      "tripType": "day",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Lip balm with SPF",
+      "note": "",
+      "category": "Personal Safety & Comfort",
+      "tripType": "day",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Daypack, 15–20L",
+      "note": "",
+      "category": "Pack",
+      "tripType": "day",
+      "rentable": true,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Tent or shelter",
+      "note": "Shared or solo — ask your guide",
+      "category": "Shelter & Sleep",
+      "tripType": "overnight",
+      "rentable": true,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Sleeping bag",
+      "note": "Rated for the expected overnight low",
+      "category": "Shelter & Sleep",
+      "tripType": "overnight",
+      "rentable": true,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Sleeping pad",
+      "note": "Foam or inflatable",
+      "category": "Shelter & Sleep",
+      "tripType": "overnight",
+      "rentable": true,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Camp pillow",
+      "note": "Optional",
+      "category": "Shelter & Sleep",
+      "tripType": "overnight",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Backpacking pack, 40–65L",
+      "note": "",
+      "category": "Pack",
+      "tripType": "overnight",
+      "rentable": true,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Food",
+      "note": "Trip length + one extra day, unless provided",
+      "category": "Food & Water",
+      "tripType": "overnight",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Water",
+      "note": "Confirm refill points with your guide",
+      "category": "Food & Water",
+      "tripType": "overnight",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Mug, bowl, utensils",
+      "note": "Optional, if not provided",
+      "category": "Food & Water",
+      "tripType": "overnight",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Extra base layers",
+      "note": "",
+      "category": "Extra Clothing",
+      "tripType": "overnight",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Insulated jacket",
+      "note": "",
+      "category": "Extra Clothing",
+      "tripType": "overnight",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Extra socks and underwear",
+      "note": "",
+      "category": "Extra Clothing",
+      "tripType": "overnight",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Sleepwear",
+      "note": "",
+      "category": "Extra Clothing",
+      "tripType": "overnight",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Camp shoes",
+      "note": "",
+      "category": "Extra Clothing",
+      "tripType": "overnight",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Headlamp + extra batteries",
+      "note": "",
+      "category": "Personal Essentials",
+      "tripType": "overnight",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Personal first aid items",
+      "note": "",
+      "category": "Personal Essentials",
+      "tripType": "overnight",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Hand sanitizer / toiletries",
+      "note": "",
+      "category": "Personal Essentials",
+      "tripType": "overnight",
+      "rentable": false,
+      "rentalPrice": ""
+    },
+    {
+      "name": "Earplugs",
+      "note": "",
+      "category": "Personal Essentials",
+      "tripType": "overnight",
+      "rentable": false,
+      "rentalPrice": ""
+    }
+  ]
+}
