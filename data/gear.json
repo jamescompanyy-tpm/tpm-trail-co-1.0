@@ -2,7 +2,7 @@
   "items": [
     {
       "name": "Broken-in hiking shoes or boots",
-      "note": "",
+      "note": "I recommend using trail runners they are very comfy, light weight and dry quickly when wet.",
       "category": "Clothing & Footwear",
       "tripType": "day",
       "rentable": false,
@@ -10,7 +10,7 @@
     },
     {
       "name": "Moisture-wicking socks",
-      "note": "No cotton",
+      "note": "steer clear of cotton they hold moisture and can lead to blisters. I recommend using wool blend. they're anti smell moisture wicking and dry very quick.",
       "category": "Clothing & Footwear",
       "tripType": "day",
       "rentable": false,
@@ -18,7 +18,7 @@
     },
     {
       "name": "Weather-appropriate layers",
-      "note": "Insulating layer + wind/rain shell",
+      "note": "base layer + wind/rain shell",
       "category": "Clothing & Footwear",
       "tripType": "day",
       "rentable": false,
@@ -34,7 +34,7 @@
     },
     {
       "name": "Sunglasses",
-      "note": "",
+      "note": "convenient but not necessary ",
       "category": "Clothing & Footwear",
       "tripType": "day",
       "rentable": false,
@@ -57,8 +57,8 @@
       "rentalPrice": ""
     },
     {
-      "name": "Water, 2–3 liters",
-      "note": "",
+      "name": "Water",
+      "note": "We will plan together how much water is necessary per trip.",
       "category": "Hydration & Food",
       "tripType": "day",
       "rentable": false,
@@ -74,7 +74,7 @@
     },
     {
       "name": "Lunch",
-      "note": "Unless provided — confirm with your guide",
+      "note": "We'll plan meals in the booking phase",
       "category": "Hydration & Food",
       "tripType": "day",
       "rentable": false,
@@ -89,7 +89,7 @@
       "rentalPrice": ""
     },
     {
-      "name": "Sunscreen",
+      "name": "Sunscreen or sun hoodie",
       "note": "",
       "category": "Personal Safety & Comfort",
       "tripType": "day",
@@ -226,15 +226,15 @@
     },
     {
       "name": "Headlamp + extra batteries",
-      "note": "",
+      "note": "make sure its fully charged",
       "category": "Personal Essentials",
       "tripType": "overnight",
-      "rentable": false,
+      "rentable": true,
       "rentalPrice": ""
     },
     {
-      "name": "Personal first aid items",
-      "note": "",
+      "name": "Personal first aid items (included on every hike)",
+      "note": "You're always welcome to bring a small first aid kit",
       "category": "Personal Essentials",
       "tripType": "overnight",
       "rentable": false,
@@ -250,7 +250,7 @@
     },
     {
       "name": "Earplugs",
-      "note": "",
+      "note": "(optional comfort item)",
       "category": "Personal Essentials",
       "tripType": "overnight",
       "rentable": false,
