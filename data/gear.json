@@ -146,7 +146,7 @@
     },
     {
       "name": "Camp pillow",
-      "note": "Optional",
+      "note": "This is optional and usually considered a luxury item.",
       "category": "Shelter & Sleep",
       "tripType": "overnight",
       "rentable": false,
@@ -162,7 +162,7 @@
     },
     {
       "name": "Food",
-      "note": "Trip length + one extra day, unless provided",
+      "note": "Trip length + one extra day",
       "category": "Food & Water",
       "tripType": "overnight",
       "rentable": false,
@@ -178,22 +178,22 @@
     },
     {
       "name": "Mug, bowl, utensils",
-      "note": "Optional, if not provided",
+      "note": "",
       "category": "Food & Water",
       "tripType": "overnight",
-      "rentable": false,
+      "rentable": true,
       "rentalPrice": ""
     },
     {
       "name": "Extra base layers",
-      "note": "",
+      "note": "You'll only need one extra layer depending on weather",
       "category": "Extra Clothing",
       "tripType": "overnight",
       "rentable": false,
       "rentalPrice": ""
     },
     {
-      "name": "Insulated jacket",
+      "name": "lightweight puffy Insulated jacket",
       "note": "",
       "category": "Extra Clothing",
       "tripType": "overnight",
@@ -202,15 +202,15 @@
     },
     {
       "name": "Extra socks and underwear",
-      "note": "",
+      "note": "steer clear of cotton. Wool and synthetic are best for your foot health on the trail",
       "category": "Extra Clothing",
       "tripType": "overnight",
       "rentable": false,
       "rentalPrice": ""
     },
     {
-      "name": "Sleepwear",
-      "note": "",
+      "name": "Sleepwear ",
+      "note": "Optional - adds extra bulk and weight.",
       "category": "Extra Clothing",
       "tripType": "overnight",
       "rentable": false,
@@ -218,7 +218,7 @@
     },
     {
       "name": "Camp shoes",
-      "note": "",
+      "note": "optional luxury item",
       "category": "Extra Clothing",
       "tripType": "overnight",
       "rentable": false,
